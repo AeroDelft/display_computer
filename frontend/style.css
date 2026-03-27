@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+  background: black;
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100dvh;
+  overflow: hidden; /* dashboard should fit; warnings list is the only intended scroll */
+}
+  
+  /* ── OUTER DASHBOARD: stacked gauges (top) + hydrogen/warnings (bottom) ── */
+  .dashboard {
+  width: min(900px, calc(100vw - 40px));
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3dvh, 20px);
+  padding: clamp(12px, 3dvh, 20px);
+  overflow: hidden;
+}
+  
+  .top-area {
+    flex: 0 0 auto;
+    min-height: 0;
+  }
+
+  /* ── GAUGES (top area) ── */
+  .gauges {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    column-gap: clamp(6px, 1.4vw, 10px);
+    row-gap: 0;
+  }
+
+  .gauge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+  
+  .gauge {
+    /* Default: tuned for 3 columns (landscape-ish). Also constrained by viewport width
+       so the gauge never forces the layout “sideways” on portrait displays. */
+    --gauge-size: min(
+      clamp(80px, 16dvh, 200px),
+      calc((100vw - 40px) / 3)
+    );
+    width: var(--gauge-size);
+    height: var(--gauge-size);
+  }
+  
+  .gauge-label {
+    color: white;
+    font-size: clamp(10px, 2.2dvh, 16px);
+    letter-spacing: 1px;
+    margin-top: calc(-1 * clamp(12px, 2.2dvh, 20px));
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  
+  /* ── HYDROGEN PANEL ─ */
+  .hydrogen-panel {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2.2dvh, 15px);
+  }
+  
+  .ambient-h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #333;
+    padding: clamp(8px, 1.8dvh, 10px);
+    color: #aaa;
+    font-size: clamp(11px, 2.0dvh, 14px);
+  }
+  
+  .ambient-value {
+    font-size: clamp(18px, 3.4dvh, 28px);
+    color: white;
+  }
+  
+  .fuel-section {
+    display: flex;
+    gap: clamp(14px, 3.2vw, 25px);
+    margin-top: clamp(8px, 2.2dvh, 10px);
+  }
+  
+  .fuel-bar {
+    width: clamp(18px, 3.8vw, 30px);
+    height: clamp(70px, 13dvh, 160px);
+    border: 1px solid #333;
+    position: relative;
+    flex-shrink: 0;
+  }
+  
+  .fuel-level {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to top, #2b6cff, #6ea6ff);
+  }
+  
+  .fuel-info {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1.3dvh, 8px);
+    color: #ccc;
+    font-size: clamp(12px, 2.4dvh, 15px);
+  }
+  
+  /* ── BOTTOM AREA: hydrogen (left) + warnings (right) ── */
+  .bottom-area {
+    flex: 1 1 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* hydrogen under first 2 gauge columns, warnings under 3rd */
+    column-gap: clamp(14px, 3.8vw, 30px);
+    min-height: 0; /* allow children to shrink inside viewport */
+  }
+
+  /* ── Portrait mode: make the dashboard feel “vertical”
+     Use multiple conditions because some environments report orientation differently. ── */
+  @media (orientation: portrait), (max-aspect-ratio: 1/1), (max-width: 820px) {
+    .gauges {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: clamp(8px, 2dvh, 14px);
+    }
+
+    .gauge {
+      /* Tuned for 2 columns in portrait. Constrain by width so it doesn't overflow. */
+      --gauge-size: min(
+        clamp(70px, 15dvh, 200px),
+        calc((100vw - 40px) / 2)
+      );
+    }
+
+    .bottom-area {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      row-gap: clamp(12px, 2.8dvh, 20px);
+      column-gap: 0;
+    }
+
+    .warnings-panel {
+      min-height: 0;
+    }
+  }
+
+  /* Extremely narrow: fall back to 1 column */
+  @media (max-width: 420px) {
+    .gauges {
+      grid-template-columns: 1fr;
+    }
+
+    .gauge {
+      --gauge-size: min(
+        clamp(70px, 14dvh, 200px),
+        calc(100vw - 40px)
+      );
+    }
+  }
+  
+  /* ── WARNINGS PANEL ─ */
+  .warnings-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;           /* container itself doesn't scroll */
+  }
+  
+  .warnings-title {
+    font-size: clamp(14px, 2.6dvh, 18px);
+    color: #ccc;
+    margin-bottom: clamp(8px, 2.2dvh, 10px);
+    flex-shrink: 0;
+  }
+  
+  #warnings_list {
+    flex: 1;
+    overflow-y: auto;           /* ONLY this scrolls */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 6px;
+    min-height: 0;
+  }
+  
+  .warning-item {
+    padding: clamp(5px, 1.2dvh, 6px) clamp(8px, 1.8vw, 10px);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: clamp(12px, 2.2dvh, 14px);
+    flex-shrink: 0;
+  }
+  
+  .warning-amber {
+    background: #ffb300;
+    color: black;
+  }
+  
+  .warning-red {
+    background: #ff2a2a;
+    color: white;
+  }
+  
+  .warning-item.acknowledged {
+    opacity: 0.3;
+    text-decoration: line-through;
+  }
+  
+  
