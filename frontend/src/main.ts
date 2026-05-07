@@ -10,8 +10,8 @@ import { decodeMessage } from "./decoder.js"
 // GAUGES
 // ─────────────────────────────────────────────────────────────────────────────
 
-const motorPowerGauge = createGauge("motor_power", 0, 100, [
-  [0.6, "#ffffff"],
+const motorPowerGauge = createGauge("motor_power", 0, 100, [ //units here also add idle seciton in here 
+  [0.6, "#ffffff"], //normalized warning colors 
   [0.8, "#ffb300"],
   [1,   "#ff0000"],
 ])
@@ -40,13 +40,13 @@ const tankTempGauge = createGauge("tank_temp", 0, 100, [
   [1,    "#ff0000"],
 ])
 
-const fpTempGauge = createGauge("fp_temp", 0, 100, [
+const fpTempGauge = createGauge("fp_temp", 0, 100, [ //where is this also 
   [0.5,  "#ffffff"],
   [0.75, "#ffb300"],
   [1,    "#ff0000"],
 ])
 
-const maxTempGauge = createGauge("max_temp", 0, 120, [
+const maxTempGauge = createGauge("max_temp", 0, 120, [ //where is this 
   [0.5,  "#ffffff"],
   [0.75, "#ffb300"],
   [1,    "#ff0000"],
@@ -92,7 +92,7 @@ function applyDecoded(key: string, value: any) {
     gauge.setOption({ series: [{ data: [{ value }] }] })
   }
 
-  // ── Temperature tracking → derive max_temp ───────────────────────────
+  // ── Temperature tracking → derive max_temp ─────────────────────────── // checkthis 
   if ((TEMP_KEYS as string[]).includes(key)) {
     temps[key as keyof typeof temps] = value as number
     const max = Math.max(...TEMP_KEYS.map(k => temps[k]))
@@ -164,4 +164,4 @@ connectWebSocket((msg) => {
 //   for (const item of items) {
 //     applyDecoded(item.key, item.value)
 //   }
-// })
+// })sudo apt update

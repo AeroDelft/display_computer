@@ -2,3 +2,4 @@ fastapi
 uvicorn[standard]
 cantools
 python-can
+npm

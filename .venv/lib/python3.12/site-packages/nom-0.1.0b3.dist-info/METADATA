@@ -1,0 +1,53 @@
+Metadata-Version: 2.4
+Name: nom
+Version: 0.1.0b3
+Summary: A python parser combinator library, inspired by Nom for Rust
+Project-URL: Repository, https://github.com/Harry-Lees/Nompy.git
+Project-URL: Issues, https://github.com/Harry-Lees/Nompy/issues
+Author-email: Harry Lees <harry.lees@gmail.com>
+License-Expression: BSD-3-Clause
+License-File: LICENSE
+Requires-Python: >=3.10
+Requires-Dist: more-itertools>=10.2.0
+Requires-Dist: typing-extensions>=4.12.0
+Description-Content-Type: text/markdown
+
+# Nompy
+
+A Python [parser combinator](https://en.wikipedia.org/wiki/Parser_combinator) library inspired by the [Nom](https://github.com/rust-bakery/nom) library in Rust. This project is in no way affiliated with the original Nom Rust project.
+
+## Examples
+
+### Parse Name
+
+Parse a name and apply a simple transformation.
+
+```python
+from nom.combinators import succeeded, tag, take_rest, take_until, tuple_
+from nom.modifiers import apply
+
+to_parse = "john doe"
+
+parser = tuple_(
+    apply(succeeded(take_until(" "), tag(" ")), str.capitalize),
+    apply(take_rest(), str.capitalize),
+)
+result, remaining = parser(to_parse)
+firstname, lastname = result
+print(firstname, lastname)  # John Doe
+```
+
+
+### Parse Phone Number
+
+Parse an MSISDN with preceeding `+`
+
+```python
+from nom.combinators import preceeded, tag, take_while
+
+to_parse = "+1234567890"
+
+parser = preceeded(take_while(str.isnumeric), tag("+"))
+result, remaining = parser(to_parse)
+print(result)
+```

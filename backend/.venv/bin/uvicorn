@@ -1,4 +1,4 @@
-#!/Users/soranastoianovici/Documents/Everything/display_computer/backend/.venv/bin/python3.12
+#!/home/aerodelft/display_computer/backend/.venv/bin/python
 import sys
 from uvicorn.main import main
 if __name__ == '__main__':

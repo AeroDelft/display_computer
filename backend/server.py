@@ -20,7 +20,7 @@ DBC_FILES = [
 ]
 
 # For offline testing (until CAN integration is connected)
-LOG_FILE = Path(
+LOG_FILE = Path(    
     os.environ.get(
         "DISPLAY_COMPUTER_LOG_FILE",
         str(ROOT_DIR / "assets" / "logs" / "13_02_26_4_success.log"),
