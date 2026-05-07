@@ -6,6 +6,19 @@ import { decodeMessage } from "./decoder.js"
                                                       //   switch back to sim
 
 
+//adding a timeout                                               
+let lastMsgTime = Date.now()
+
+setInterval(() => {
+
+  const timedOut = Date.now() - lastMsgTime > 5000
+
+  if (timedOut) {
+    console.warn("No messages received in the last 5 seconds")
+  }
+}, 500)
+
+
 // ─────────────────────────────────────────────────────────────────────────────
 // GAUGES
 // ─────────────────────────────────────────────────────────────────────────────
@@ -145,11 +158,16 @@ function applyDecoded(key: string, value: any) {
 
 connectWebSocket((msg) => {
   console.log("WS message:", msg)   
+
+  let lastMsgTime = Date.now()
+
   const items = decodeMessage(msg)   // always returns an array now
   for (const item of items) {
     applyDecoded(item.key, item.value)
   }
 })
+
+
 
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -1,8 +1,7 @@
-[2026-05-07T11:10:07+02:00] start_display.sh starting
+[2026-05-07T12:42:06+02:00] start_display.sh starting
 DISPLAY=:0 XDG_SESSION_TYPE=wayland
 server does not have extension for -dpms option
-Gtk-Message: 11:10:12.447: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
-[16358:16358:0507/111013.341841:ERROR:base/memory/shared_memory_switch.cc:289] Failed global descriptor lookup: 7
-[16353:16353:0507/111014.621461:ERROR:ui/ozone/platform/wayland/gpu/wayland_surface_factory.cc:251] '--ozone-platform=wayland' is not compatible with Vulkan. Consider switching to '--ozone-platform=x11' or disabling Vulkan
-[16115:16296:0507/111018.578188:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
-[16115:16296:0507/111046.486072:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Gtk-Message: 12:42:09.020: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[21787:21787:0507/124209.405178:ERROR:base/memory/shared_memory_switch.cc:289] Failed global descriptor lookup: 7
+[21785:21785:0507/124209.515184:ERROR:ui/ozone/platform/wayland/gpu/wayland_surface_factory.cc:251] '--ozone-platform=wayland' is not compatible with Vulkan. Consider switching to '--ozone-platform=x11' or disabling Vulkan
+[21581:21747:0507/124214.475531:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
