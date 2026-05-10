@@ -11,51 +11,52 @@ import { decodeMessage } from "./decoder.js"
 // ─────────────────────────────────────────────────────────────────────────────
 
 const motorPowerGauge = createGauge("motor_power", 0, 100, [
-  [0.6, "#ffffff"],
-  [0.8, "#ffb300"],
-  [1,   "#ff0000"],
+    [0.16666667, "#ffffff"],
+    [0.3, "#ffb300"],
+    [0.9, "#a0db7e"],
+    [0.95, "#ff0000"],
 ])
-
 const motorTempGauge = createGauge("motor_temp", 0, 100, [
-  [0.5,  "#ffffff"],
-  [0.75, "#ffb300"],
-  [1,    "#ff0000"],
+    [0.6, "#ffffff"],
+    [0.75, "#ffb300"],
+    [1, "#ff0000"],
+])
+const fcTempGauge = createGauge("fc_temp", -10, 100, [
+    [0.85, "#ffffff"],
+    [0.9, "#ffb300"],
+    [1, "#ff0000"],
 ])
 
-const fcTempGauge = createGauge("fc_temp", 0, 100, [
-  [0.5,  "#ffffff"],
-  [0.75, "#ffb300"],
-  [1,    "#ff0000"],
+// need values for this from andreas
+const coolantTempGauge = createGauge("coolant_temp", -10, 100, [
+    [0.5, "#ffffff"],
+    [0.85, "#ffb300"],
+    [0.9, "#ff0000"],
 ])
 
-const coolantTempGauge = createGauge("coolant_temp", 0, 100, [
-  [0.5,  "#ffffff"],
-  [0.75, "#ffb300"],
-  [1,    "#ff0000"],
+const tankTempGauge = createGauge("tank_temp", -50, 100, [
+    [0.09, "#ff0000"],
+    [0.133333, "#ffb300"],
+    [0.853333, "#ffffff"],
+    [0.88667, "#ffb300"],
+    [1, "#ff0000"],
 ])
-
-const tankTempGauge = createGauge("tank_temp", 0, 100, [
-  [0.5,  "#ffffff"],
-  [0.75, "#ffb300"],
-  [1,    "#ff0000"],
-])
-
+//what even is this
 const fpTempGauge = createGauge("fp_temp", 0, 100, [
-  [0.5,  "#ffffff"],
-  [0.75, "#ffb300"],
-  [1,    "#ff0000"],
+    [0.5, "#ffffff"],
+    [0.75, "#ffb300"],
+    [1, "#ff0000"],
 ])
-
-const maxTempGauge = createGauge("max_temp", 0, 120, [
-  [0.5,  "#ffffff"],
-  [0.75, "#ffb300"],
-  [1,    "#ff0000"],
+const maxTempGauge = createGauge("max_temp", -5, 250, [
+    [0.4313, "#ffffff"],
+    [0.588, "#ffb300"],
+    [0.784, "#ff0000"],
 ])
-
-const placeholderGauge = createGauge("placeholder", 0, 120, [
-  [0.5,  "#ffffff"],
-  [0.75, "#ffb300"],
-  [1,    "#ff0000"],
+const medPresGauge = createGauge("med_pres", 0, 20, [
+  [0.4,  "#ffffff"],
+  [0.6, "#a0db7e"],
+  [0.8, "#ffb300"],
+  [0.1,    "#ff0000"],
 ])
 
 // Lookup table: dashboard key → gauge instance
@@ -67,6 +68,7 @@ const gauges = {
   tank_temp:    tankTempGauge,
   fp_temp:      fpTempGauge,
   max_temp:     maxTempGauge,
+  med_pres:    medPresGauge
 }
 
 // Tracked so we can derive max_temp ourselves when the source is the log replayer

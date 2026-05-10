@@ -60,6 +60,7 @@ const SIGNAL_MAP: Record<string, string> = {
   // 0x703 (NDCDCValue) – voltages
   VDCDCSRAverage:    "motor_power",
   VDCDCHVAverage:    "pressure",
+  sensor_PT6100:     "med_pres",
 
   // 0x1002 / 0x1003 (DcdcNode GlobalValue) – cell temperatures
   TInternal:         "fc_temp",
@@ -81,8 +82,8 @@ const SIGNAL_MAP: Record<string, string> = {
 
 
 export type DashboardKey =
-  | "motor_power" | "motor_temp" | "fc_temp" | "coolant_temp"
-  | "tank_temp"   | "fp_temp"   | "max_temp"
+  | "motor_power" | "motor_temp" | "fc_temp" | "coolant_temp" //change here
+  | "tank_temp"   | "fp_temp"   | "max_temp" | "med_pres"
   | "ambient_h2"  | "fuel_percent" | "mass" | "pressure"
   | "consumption" | "time_left"
   | "warning"
@@ -162,10 +163,11 @@ export function decodeMessage(msg: any): DecodedItem[] {
       case 101: results.push({ key: "motor_power",  value: msg.value }); break
       case 102: results.push({ key: "motor_temp",   value: msg.value }); break
       case 103: results.push({ key: "fc_temp",      value: msg.value }); break
-      case 104: results.push({ key: "coolant_temp", value: msg.value }); break
+      case 104: results.push({ key: "coolant_temp", value: msg.value }); break //change here 
       case 105: results.push({ key: "tank_temp",    value: msg.value }); break
       case 106: results.push({ key: "fp_temp",      value: msg.value }); break
       case 107: results.push({ key: "max_temp",     value: msg.value }); break
+      case 108: results.push({ key: "med_pres",     value: msg.value }); break
       // Hydrogen panel
       case 201: results.push({ key: "ambient_h2",   value: msg.value }); break
       case 202: results.push({ key: "fuel_percent",  value: msg.value }); break

@@ -57,6 +57,7 @@ const SIGNAL_MAP = {
     // 0x703 (NDCDCValue) – voltages
     VDCDCSRAverage: "motor_power",
     VDCDCHVAverage: "pressure",
+    sensor_PT6100: "med_pres",
     // 0x1002 / 0x1003 (DcdcNode GlobalValue) – cell temperatures
     TInternal: "fc_temp",
     TCell1N1: "motor_temp",
@@ -86,16 +87,16 @@ function severityFromSignalName(sigName) {
     return null;
 }
 function maybeEmitWarning(sigName, rawValue) {
+    var _a, _b;
     const override = WARNING_OVERRIDES[sigName];
     const severity = override ? override.severity : severityFromSignalName(sigName);
     if (!severity)
         return null;
     const active = rawValue !== 0;
-    const wasActive = (sigName in warningActiveBySignal) ? warningActiveBySignal[sigName] : false;
+    const wasActive = (_a = warningActiveBySignal[sigName]) !== null && _a !== void 0 ? _a : false;
     warningActiveBySignal[sigName] = active;
     if (active && !wasActive) {
-        const name = override && override.name ? override.name : sigName;
-        return { key: "warning", value: { name, severity } };
+        return { key: "warning", value: { name: (_b = override === null || override === void 0 ? void 0 : override.name) !== null && _b !== void 0 ? _b : sigName, severity } };
     }
     return null;
 }
@@ -141,7 +142,7 @@ export function decodeMessage(msg) {
                 break;
             case 104:
                 results.push({ key: "coolant_temp", value: msg.value });
-                break;
+                break; //change here 
             case 105:
                 results.push({ key: "tank_temp", value: msg.value });
                 break;
@@ -150,6 +151,9 @@ export function decodeMessage(msg) {
                 break;
             case 107:
                 results.push({ key: "max_temp", value: msg.value });
+                break;
+            case 108:
+                results.push({ key: "med_pres", value: msg.value });
                 break;
             // Hydrogen panel
             case 201:
@@ -173,9 +177,9 @@ export function decodeMessage(msg) {
             // Warnings
             case 300: {
                 const w = msg.value;
-                const name = w && typeof w.name === "string" ? w.name : undefined;
-                const severity = w && (w.severity === "amber" || w.severity === "red") ? w.severity : undefined;
-                if (typeof name === "string" && severity && !(name in warningActiveBySignal)) {
+                const name = w === null || w === void 0 ? void 0 : w.name;
+                const severity = w === null || w === void 0 ? void 0 : w.severity;
+                if (typeof name === "string" && severity && !warningActiveBySignal[name]) {
                     warningActiveBySignal[name] = true;
                     results.push({ key: "warning", value: { name, severity } });
                 }
