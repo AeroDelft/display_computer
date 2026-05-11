@@ -59,8 +59,7 @@ def main():
 
     bus = can.interface.Bus(
         interface="virtual",
-        channel="sim",
-        receive_own_messages=False,
+        channel="test"
     )
    
 

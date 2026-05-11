@@ -60,6 +60,8 @@ const SIGNAL_MAP: Record<string, string> = {
   // 0x703 (NDCDCValue) – voltages
   VDCDCSRAverage:    "motor_power",
   VDCDCHVAverage:    "pressure",
+  
+  //external
   sensor_PT6100:     "med_pres",
 
   // 0x1002 / 0x1003 (DcdcNode GlobalValue) – cell temperatures
