@@ -13,14 +13,14 @@ echo "[$(date -Is)] start_display.sh starting"
 echo "DISPLAY=${DISPLAY:-<unset>} XDG_SESSION_TYPE=${XDG_SESSION_TYPE:-<unset>}"
 
 # If these are already running (e.g. after manual restart), stop old instances.
-pkill -f "uvicorn server_new:app --host 127.0.0.1 --port 8000" || true
+pkill -f "uvicorn server_logger:app --host 127.0.0.1 --port 8000" || true
 pkill -f "python3 -m http.server 8080 --directory ${FRONTEND_DIR}" || true
 
 # Start backend API/WebSocket server.
 (
   cd "${BACKEND_DIR}"
-  exec "${BACKEND_DIR}/.venv/bin/python" -m uvicorn server_new:app --host 127.0.0.1 --port 8000
-) > "${RUNTIME_DIR}/backend.log" 2>&1 &
+  exec "${BACKEND_DIR}/.venv/bin/python" -m uvicorn server_logger:app --host 127.0.0.1 --port 8000
+) &
 echo $! > "${RUNTIME_DIR}/backend.pid"
 
 # Start local frontend HTTP server (fully offline).

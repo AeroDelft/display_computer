@@ -14,12 +14,12 @@ from starlette.websockets import WebSocketDisconnect
 
 app = FastAPI()
 
-can_sim = True
+# can_sim = False
 stop_logging = False
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DBC_DIR = ROOT_DIR / "assets" / "dbc_files"
-LOG_DIR = ROOT_DIR / "assets" / "test_log" / "13_02_26_4_success.asc"
+# LOG_DIR = ROOT_DIR / "assets" / "test_log" / "13_02_26_4_success.asc"
 
 #load dbcs
 dbc_files = []
@@ -36,68 +36,43 @@ os.makedirs("logs", exist_ok=True)  # ensure folder exists
 complete_file_name = f"logs/{timestamp_str}[{filename}]"
 csv_path = f"assets/{timestamp_str}[{filename}].csv"
 
-if can_sim == True:
-    bus = can.interface.Bus(
-            interface="virtual",
-            channel="test"
-        )
-    log = can.ASCReader(LOG_DIR)
-    sync = can.MessageSync(log)
-    reader = can.AsyncBufferedReader()
-    print("Using simulated CAN")
-    
-else:
-    possible_interfaces = []
-    for interface in can.detect_available_configs():
-        if "pcan" in interface["interface"]:
-            possible_interfaces.append(interface)
-            print(
-                f"\nFound PCAN interface: {interface['interface']} with channel {interface['channel']}\n"
-            )
-
-    if len(possible_interfaces) == 0:
-        raise Exception("No PCAN interfaces found.")
-
-    can_bus = can.interface.Bus(
-        channel=possible_interfaces[0]["channel"],
-        interface=possible_interfaces[0]["interface"],
+possible_interfaces = []
+for interface in can.detect_available_configs():
+    if "virtual" in interface["interface"]:
+        continue;
+    possible_interfaces.append(interface)
+    print(
+        f"\nFound CAN interface: {interface['interface']} with channel {interface['channel']}\n"
     )
+
+if len(possible_interfaces) == 0:
+    raise Exception("No CAN interfaces found.")
+
+can_bus = can.interface.Bus(
+    channel=possible_interfaces[0]["channel"],
+    interface=possible_interfaces[0]["interface"],
+)
 
 
 def stop_handler(event):
     global stop_server
     stop_server = True
 
-async def replay_asc_log(tx_bus: can.BusABC, stop_server:bool):
-  
-    reader = can.ASCReader(LOG_DIR)
+    # notifier.stop()
+    # rx_bus.shutdown()
 
-    previous_timestamp = None
+    # if tx_bus:
+    #     tx_bus.shutdown()
 
-    for msg in reader:
-        if stop_server:
-            break
+    can_bus.shutdown()
 
-        if previous_timestamp is not None:
-            delay = msg.timestamp - previous_timestamp
-            if delay > 0:
-                await asyncio.sleep(min(delay, 0.25))
-
-        previous_timestamp = msg.timestamp
-
-        try:
-            tx_bus.send(msg)
-        except can.CanError as e:
-            print("CAN send error:", e)
+    print("Stopped CAN WebSocket cleanly.")
 
 keyboard.on_press_key("q", stop_handler, suppress=True) #exit == press q
 
 with open(csv_path, "w", newline="") as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(["time", "signal", "value"])
-
-
-    print("Listening for CAN messages... Press q to stop.")
 
     unknown_msg = 0
     diagnostics: list[dict] = []
@@ -108,8 +83,8 @@ with open(csv_path, "w", newline="") as csvfile:
         try:
 
             for msg in can_bus:  # continuous loop
-        
 
+                print("Listening for CAN messages... Press q to stop.")
 
                 if stop_server:
                     print("\nStopped by key press")
@@ -148,7 +123,6 @@ with open(csv_path, "w", newline="") as csvfile:
 
 
                 except (cantools.database.errors.DecodeError, KeyError) as e:
-                    # ignore unknown/partial messages
                     unknown_msg += 1
                     print(f"Unknown message: ID {msg.arbitration_id}, data {msg.data.hex()}")
                     diagnostics.append({"type": "decode_error", "can_id": hex(msg.arbitration_id), "error": str(e)})

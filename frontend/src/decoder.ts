@@ -171,7 +171,7 @@ export function decodeMessage(msg: any): DecodedItem[] {
       case 107: results.push({ key: "max_temp",     value: msg.value }); break
       case 108: results.push({ key: "med_pres",     value: msg.value }); break
       // Hydrogen panel
-      case 201: results.push({ key: "ambient_h2",   value: msg.value }); break
+      case 201: results.push({ key: "ambient_h2",   value: msg.value }); break //I dont think any  of these are working
       case 202: results.push({ key: "fuel_percent",  value: msg.value }); break
       case 203: results.push({ key: "mass",          value: msg.value }); break
       case 204: results.push({ key: "pressure",      value: msg.value }); break

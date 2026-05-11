@@ -42,12 +42,12 @@ const tankTempGauge = createGauge("tank_temp", -50, 100, [
     [1, "#ff0000"],
 ])
 //what even is this
-const fpTempGauge = createGauge("fp_temp", 0, 100, [
+const fpTempGauge = createGauge("fp_temp", 0, 100, [ //incorrect
     [0.5, "#ffffff"],
     [0.75, "#ffb300"],
     [1, "#ff0000"],
 ])
-const maxTempGauge = createGauge("max_temp", -5, 250, [
+const maxTempGauge = createGauge("max_temp", -5, 250, [ //currently this just takes max of all other displayed gauges rather than ambient.
     [0.4313, "#ffffff"],
     [0.588, "#ffb300"],
     [0.784, "#ff0000"],
@@ -95,7 +95,7 @@ function applyDecoded(key: string, value: any) {
   }
 
   // ── Temperature tracking → derive max_temp ───────────────────────────
-  if ((TEMP_KEYS as string[]).includes(key)) {
+  if ((TEMP_KEYS as string[]).includes(key)) { //this is incorrect, gotta add in other ambient temp sensors from CAN and derive max (ask andreas for dbc)
     temps[key as keyof typeof temps] = value as number
     const max = Math.max(...TEMP_KEYS.map(k => temps[k]))
     maxTempGauge.setOption({ series: [{ data: [{ value: max }] }] })
