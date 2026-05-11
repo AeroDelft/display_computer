@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# set -euo pipefail
+set -x
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKEND_DIR="${REPO_DIR}/backend"
@@ -7,27 +8,27 @@ FRONTEND_DIR="${REPO_DIR}/frontend"
 RUNTIME_DIR="${REPO_DIR}/.runtime"
 
 mkdir -p "${RUNTIME_DIR}"
-exec > "${RUNTIME_DIR}/launcher.log" 2>&1
+
 
 echo "[$(date -Is)] start_display.sh starting"
 echo "DISPLAY=${DISPLAY:-<unset>} XDG_SESSION_TYPE=${XDG_SESSION_TYPE:-<unset>}"
 
 # If these are already running (e.g. after manual restart), stop old instances.
-pkill -f "uvicorn server_new:app --host 127.0.0.1 --port 8000" || true
+pkill -f "uvicorn server_logger:app --host 127.0.0.1 --port 8000" || true
 pkill -f "python3 -m http.server 8080 --directory ${FRONTEND_DIR}" || true
 
 # Start backend API/WebSocket server.
 (
   cd "${BACKEND_DIR}"
-  exec "${BACKEND_DIR}/.venv/bin/python" -m uvicorn server_new:app --host 127.0.0.1 --port 8000
-) > "${RUNTIME_DIR}/backend.log" 2>&1 &
+  exec "${BACKEND_DIR}/.venv/bin/python3 "-m uvicorn server_logger:app --host 127.0.0.1 --port 8000
+) &
 echo $! > "${RUNTIME_DIR}/backend.pid"
 
 # Start local frontend HTTP server (fully offline).
 (
   cd "${REPO_DIR}"
   exec python3 -m http.server 8080 --directory "${FRONTEND_DIR}"
-) > "${RUNTIME_DIR}/frontend.log" 2>&1 &
+) 2>&1 | tee "${RUNTIME_DIR}/frontend.log" &
 echo $! > "${RUNTIME_DIR}/frontend.pid"
 
 # Give servers a moment to start before launching browser.
