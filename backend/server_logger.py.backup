@@ -1,0 +1,130 @@
+import csv
+from datetime import datetime
+from email.mime import message
+import os
+import cantools
+import can
+# import keyboard
+import time
+import asyncio
+from pathlib import Path
+
+from fastapi import FastAPI, WebSocket
+from starlette.websockets import WebSocketDisconnect
+
+app = FastAPI()
+
+stop_server = False
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DBC_DIR = ROOT_DIR / "assets" / "dbc_files"
+
+#load dbcs
+dbc_files = []
+db = cantools.database.Database()
+for file in os.listdir(DBC_DIR):
+    if file.endswith(".dbc"):
+        dbc_files.append(file)
+        db.add_dbc_file(f"{DBC_DIR}/{file}")
+
+
+filename = "KWB-Integrated-Testing" 
+timestamp_str = datetime.now().strftime("[%Y-%m-%d]__[%H-%M]__")
+os.makedirs("logs", exist_ok=True)  
+complete_file_name = f"logs/{timestamp_str}[{filename}]"
+csv_path = f"assets/{timestamp_str}[{filename}].csv"
+
+
+possible_interfaces = []
+for interface in can.detect_available_configs():
+    if 'virtual' in interface['interface']:
+        continue
+    possible_interfaces.append(interface)
+    print(
+        f"\nFound <can interface: {interface['interface']} with channel {interface['channel']}\n"
+    )
+
+if len(possible_interfaces) == 0:
+    raise Exception("No CAN interfaces found.")
+
+can_bus = can.interface.Bus(
+    channel=possible_interfaces[0]["channel"], #here we can make it socketcan
+    interface=possible_interfaces[0]["interface"], #here we can make it can0
+    recv_own_messages=False  # receive messages sent by this program
+    )
+
+
+def stop_handler(event):
+    global stop_server
+    stop_server = True
+
+    can_bus.shutdown()
+
+
+# keyboard.on_press_key("q", stop_handler, suppress=True) #exit == press q check this works
+
+with open(csv_path, "w", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["time", "signal", "value"])
+
+
+    unknown_msg = 0
+    diagnostics: list[dict] = []
+
+    @app.websocket("/ws") 
+    async def websocket_endpoint(websocket: WebSocket):
+        await websocket.accept()
+        try:
+
+            for msg in can_bus:  # add a timeout here to allow error detection   
+                print("Listening for CAN messages... Press q to stop.")
+
+                if stop_server:
+                    print("\nStopped by key press")
+                    break
+
+                try:
+                    try: 
+                        can_id = msg.arbitration_id
+
+                        decoded = db.decode_message(can_id, msg.data)
+                        msg_def = db.get_message_by_frame_id(can_id)
+
+                        print(can_id)
+
+                        # Compute display name
+                        name = (
+                            msg_def.name.replace("NDCDC", "DCMP_")
+                            .replace("dcdc", "DCHV_")
+                            .replace("user", "MS100")
+                        )
+
+                        for signal_name, value in decoded.items():
+                            full_signal_name = f"{name}.{signal_name}"
+                            writer.writerow([f"{msg.timestamp:.6f}", full_signal_name, value]) #here it is being logged pls check it work  
+                        # saved to log file here 
+                        # now sending to websocket
+                        if decoded: 
+                            await websocket.send_json(
+                                {
+                                    "can_id": hex(can_id),
+                                    "signals": decoded,
+                                    "diagnostics": diagnostics,
+                                })
+
+                        print(f"Sent message with CAN ID {hex(can_id)} to frontend")
+
+                    except WebSocketDisconnect:
+                        print("Client disconnected")
+
+                except (cantools.database.errors.DecodeError, KeyError) as e:
+                    # ignore unknown/partial messages
+                    unknown_msg += 1
+                    print(f"Unknown message: ID {msg.arbitration_id}, data {msg.data.hex()}")
+                    diagnostics.append({"type": "decode_error", "can_id": hex(msg.arbitration_id), "error": str(e)})
+                    pass
+
+        except KeyboardInterrupt:
+            print("\nStopped by user")
+            can_bus.shutdown()
+    

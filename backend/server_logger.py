@@ -1,130 +1,133 @@
-import csv
-from datetime import datetime
-from email.mime import message
-import os
-import cantools
-import can
-import keyboard
-import time
 import asyncio
+import csv
+import logging
+import os
+from datetime import datetime
 from pathlib import Path
 
+import can
+import cantools
 from fastapi import FastAPI, WebSocket
 from starlette.websockets import WebSocketDisconnect
 
-app = FastAPI()
+# Configure logging
+# To enable DEBUG logging, change level to logging.DEBUG
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+logger = logging.getLogger(__name__)
 
-stop_logging = False
+app = FastAPI()
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DBC_DIR = ROOT_DIR / "assets" / "dbc_files"
 
-#load dbcs
-dbc_files = []
 db = cantools.database.Database()
 for file in os.listdir(DBC_DIR):
     if file.endswith(".dbc"):
-        dbc_files.append(file)
         db.add_dbc_file(f"{DBC_DIR}/{file}")
+        logger.info(f"Loaded DBC file: {file}")
 
-# Prepare CSV file with timestamped filename
-filename = input("Enter a name for the log file (without extension): ") #maybe make it auto
+filename = "KWB-Integrated-Testing"
 timestamp_str = datetime.now().strftime("[%Y-%m-%d]__[%H-%M]__")
-os.makedirs("logs", exist_ok=True)  # ensure folder exists
-complete_file_name = f"logs/{timestamp_str}[{filename}]"
-csv_path = f"assets/{timestamp_str}[{filename}].csv"
-
-
-possible_interfaces = []
-for interface in can.detect_available_configs():
-    possible_interfaces.append(interface)
-    print(
-        f"\nFound <can interface: {interface['interface']} with channel {interface['channel']}\n"
-    )
-
-if len(possible_interfaces) == 0:
-    raise Exception("No CAN interfaces found.")
+os.makedirs(ROOT_DIR / "assets", exist_ok=True)
+csv_path = ROOT_DIR / "assets" / f"{timestamp_str}[{filename}].csv"
 
 can_bus = can.interface.Bus(
-    channel=possible_interfaces[0]["channel"],
-    interface=possible_interfaces[0]["interface"],
+    channel="vcan0", interface="socketcan", recv_own_messages=False
 )
+logger.info(f"CAN bus initialized on channel vcan0")
+logger.info(f"CSV logging to: {csv_path}")
+
+unknown_msg = 0
+diagnostics = []
+csvfile = open(csv_path, "w", newline="")
+writer = csv.writer(csvfile)
+writer.writerow(["time", "signal", "value"])
+csvfile.flush()  # Ensure header is written immediately
+
+# Counter for periodic unknown message logging
+message_count = 0
+REPORT_INTERVAL = 100  # Report unknown messages every N messages
 
 
-def stop_handler(event):
-    global stop_server
-    stop_server = True
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    global unknown_msg, message_count
 
-    can_bus.shutdown()
+    await websocket.accept()
+    logger.info("WebSocket client connected")
+    loop = asyncio.get_event_loop()
 
+    try:
+        while True:
+            msg = await loop.run_in_executor(None, can_bus.recv)
+            if msg is None:
+                continue
 
-keyboard.on_press_key("q", stop_handler, suppress=True) #exit == press q
+            message_count += 1
+            logger.debug(
+                f"Received CAN message: ID={hex(msg.arbitration_id)}, Data={msg.data.hex()}"
+            )
 
-with open(csv_path, "w", newline="") as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(["time", "signal", "value"])
+            try:
+                can_id = msg.arbitration_id
+                decoded = db.decode_message(can_id, msg.data)
+                msg_def = db.get_message_by_frame_id(can_id)
+                name = (
+                    msg_def.name.replace("NDCDC", "DCMP_")
+                    .replace("dcdc", "DCHV_")
+                    .replace("user", "MS100")
+                )
 
+                logger.debug(
+                    f"Successfully decoded message {name} (ID={hex(can_id)}): {decoded}"
+                )
 
-    unknown_msg = 0
-    diagnostics: list[dict] = []
+                # Write to CSV
+                for signal_name, value in decoded.items():
+                    full_signal_name = f"{name}.{signal_name}"
+                    writer.writerow([f"{msg.timestamp:.6f}", full_signal_name, value])
 
-    @app.websocket("/ws") #create a websocket endpoint for the frontend to connect to
-    async def websocket_endpoint(websocket: WebSocket):
-        await websocket.accept()
-        try:
+                # Flush CSV to ensure data is saved
+                csvfile.flush()
 
-            for msg in can_bus:  # continuous loop
-                print("Listening for CAN messages... Press q to stop.")
-
-                if stop_server:
-                    print("\nStopped by key press")
-                    break
-
-                try:
-                    try: 
-                        can_id = msg.arbitration_id
-
-                        decoded = db.decode_message(can_id, msg.data)
-                        msg_def = db.get_message_by_frame_id(can_id)
-
-                        print(can_id)
-
-                        # Compute display name
-                        name = (
-                            msg_def.name.replace("NDCDC", "DCMP_")
-                            .replace("dcdc", "DCHV_")
-                            .replace("user", "MS100")
-                        )
-
-                        for signal_name, value in decoded.items():
-                            full_signal_name = f"{name}.{signal_name}"
-                            writer.writerow([f"{msg.timestamp:.6f}", full_signal_name, value]) 
-                        # saved to log file here 
-                        # now sending to websocket
-                        if decoded: 
-                            await websocket.send_json(
-                                {
-                                    "can_id": hex(can_id),
-                                    "signals": decoded,
-                                    "diagnostics": diagnostics,
-                                }
+                if decoded:
+                    json_data = {
+                        "can_id": hex(can_id),
+                        "signals": decoded,
+                        "diagnostics": diagnostics,
+                    }
+                    await websocket.send_json(json_data)
+                    logger.info(
+                        f"Sent CAN ID {hex(can_id)} with {len(decoded)} signals to WebSocket"
                     )
+                    logger.debug(f"JSON payload: {json_data}")
 
-                    except WebSocketDisconnect:
-                        print("Client disconnected")
+            except cantools.database.errors.DecodeError as e:
+                unknown_msg += 1
+                logger.debug(f"DecodeError for CAN ID {hex(msg.arbitration_id)}: {e}")
 
-                except (cantools.database.errors.DecodeError, KeyError) as e:
-                    # ignore unknown/partial messages
-                    unknown_msg += 1
-                    print(f"Unknown message: ID {msg.arbitration_id}, data {msg.data.hex()}")
-                    diagnostics.append({"type": "decode_error", "can_id": hex(msg.arbitration_id), "error": str(e)})
-                    pass
+            except KeyError as e:
+                unknown_msg += 1
+                logger.debug(f"KeyError for CAN ID {hex(msg.arbitration_id)}: {e}")
 
-        except KeyboardInterrupt:
-            print("\nStopped by user")
+            except Exception as e:
+                unknown_msg += 1
+                logger.warning(
+                    f"Unexpected error decoding CAN ID {hex(msg.arbitration_id)}: {type(e).__name__}: {e}"
+                )
 
+            # Periodically report unknown message count
+            if message_count % REPORT_INTERVAL == 0:
+                logger.info(
+                    f"Status: Processed {message_count} messages, {unknown_msg} unknown ({unknown_msg / message_count * 100:.1f}%)"
+                )
 
-# if __name__ == "__main__":
-#     import uvicorn
-
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+    except WebSocketDisconnect:
+        logger.info("WebSocket client disconnected")
+    finally:
+        # Ensure CSV is flushed on disconnect
+        csvfile.flush()

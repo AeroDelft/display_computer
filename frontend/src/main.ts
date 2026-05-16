@@ -95,7 +95,7 @@ function applyDecoded(key: string, value: any) {
   }
 
   // ── Temperature tracking → derive max_temp ───────────────────────────
-  if ((TEMP_KEYS as string[]).includes(key)) {
+  if ((TEMP_KEYS as string[]).includes(key)) { 
     temps[key as keyof typeof temps] = value as number
     const max = Math.max(...TEMP_KEYS.map(k => temps[k]))
     maxTempGauge.setOption({ series: [{ data: [{ value: max }] }] })
