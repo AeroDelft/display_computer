@@ -23,7 +23,8 @@ pkill -f "python3 -m http.server 8080 --directory ${FRONTEND_DIR}" || true
 # Start backend API/WebSocket server.
 (
   cd "${BACKEND_DIR}"
-  exec "${BACKEND_DIR}/.venv/bin/python3 "-m uvicorn server_logger:app --host 127.0.0.1 --port 8000
+  echo $BACKEND_DIR
+  exec "${BACKEND_DIR}/.venv/bin/python3" -u -m uvicorn server_logger:app --host 127.0.0.1 --port 8000
 ) &
 echo $! > "${RUNTIME_DIR}/backend.pid"
 
@@ -39,31 +40,31 @@ echo $! > "${RUNTIME_DIR}/frontend.pid"
 URL="http://127.0.0.1:8080/index.html"
 
 # # Keep the display awake (no screen blanking/power-save) when X is available.
-# if command -v xset >/dev/null 2>&1; then
-#   xset s off || true
-#   xset -dpms || true
-#   xset s noblank || true
-# fi
+if command -v xset >/dev/null 2>&1; then
+  xset s off || true
+  xset -dpms || true
+  xset s noblank || true
+fi
 
-# # Hide mouse cursor after a short idle period (optional).
-# if command -v unclutter >/dev/null 2>&1; then
-#   pkill -f "unclutter.*-root" || true
-#   unclutter --idle 0.5 --root >/dev/null 2>&1 &
-# fi
+# Hide mouse cursor after a short idle period (optional).
+if command -v unclutter >/dev/null 2>&1; then
+  pkill -f "unclutter.*-root" || true
+  unclutter --idle 0.5 --root >/dev/null 2>&1 &
+fi
 
-# launch_browser_once() {
-#   if command -v chromium-browser >/dev/null 2>&1; then
-#     chromium-browser --kiosk --incognito --disable-pinch "${URL}"
-#   elif command -v chromium >/dev/null 2>&1; then
-#     chromium --kiosk --incognito --disable-pinch "${URL}"
-#   elif command -v google-chrome >/dev/null 2>&1; then
-#     google-chrome --kiosk --incognito --disable-pinch "${URL}"
-#   elif command -v firefox >/dev/null 2>&1; then
-#     firefox --kiosk --private-window --new-window "${URL}"
-#   else
-#     xdg-open "${URL}"
-#   fi
-# }
+launch_browser_once() {
+  if command -v chromium-browser >/dev/null 2>&1; then
+    chromium-browser --kiosk --incognito --disable-pinch "${URL}"
+  elif command -v chromium >/dev/null 2>&1; then
+    chromium --kiosk --incognito --disable-pinch "${URL}"
+  elif command -v google-chrome >/dev/null 2>&1; then
+    google-chrome --kiosk --incognito --disable-pinch "${URL}"
+  elif command -v firefox >/dev/null 2>&1; then
+    firefox --kiosk --private-window --new-window "${URL}"
+  else
+    xdg-open "${URL}"
+  fi
+}
 
-# # Launch once only. If user closes browser, keep it closed.
-# launch_browser_once
+# Launch once only. If user closes browser, keep it closed.
+launch_browser_once

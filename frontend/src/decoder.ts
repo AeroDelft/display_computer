@@ -51,81 +51,98 @@
 
 const SIGNAL_MAP: Record<string, string> = {
   // 0x703 (NDCDCValue) – temperatures °C
-  TDCDCSR1Measured:  "motor_temp",
-  TDCDCSR2Measured:  "fc_temp",
-  TDCDCBB1Measured:  "coolant_temp",
-  TDCDCBB2Measured:  "tank_temp",
-  TDCDCBB3Measured:  "fp_temp",
+  TDCDCSR1Measured: "motor_temp",
+  TDCDCSR2Measured: "fc_temp",
+  TDCDCBB1Measured: "coolant_temp",
+  TDCDCBB2Measured: "tank_temp",
+  TDCDCBB3Measured: "fp_temp",
 
   // 0x703 (NDCDCValue) – voltages
-  VDCDCSRAverage:    "motor_power",
-  VDCDCHVAverage:    "pressure",
-  
+  VDCDCSRAverage: "motor_power",
+  VDCDCHVAverage: "pressure",
+
   //external
-  sensor_PT6100:     "med_pres",
+  sensor_PT6100: "med_pres",
 
   // 0x1002 / 0x1003 (DcdcNode GlobalValue) – cell temperatures
-  TInternal:         "fc_temp",
-  TCell1N1:          "motor_temp",
-  TCell2N1:          "coolant_temp",
-  TCell3N1:          "tank_temp",
-  TCell4N1:          "fp_temp",
+  TInternal: "fc_temp",
+  TCell1N1: "motor_temp",
+  TCell2N1: "coolant_temp",
+  TCell3N1: "tank_temp",
+  TCell4N1: "fp_temp",
 
   // 0x1042 / 0x1043 (DcdcNode GlobalValue) – aux voltages
-  VAux1Measured:     "motor_power",
+  VAux1Measured: "motor_power",
 
   // 0x701 (NDCDCSetpoints)
-  VDCDCHVSetpoint:   "pressure",
-  IDCDCLV1Average:   "consumption",
-  VDCDCLV1Average:   "fuel_percent",
-}
+  VDCDCHVSetpoint: "pressure",
+  IDCDCLV1Average: "consumption",
+  VDCDCLV1Average: "fuel_percent",
+};
 
 // Types
 
-
 export type DashboardKey =
-  | "motor_power" | "motor_temp" | "fc_temp" | "coolant_temp" //change here
-  | "tank_temp"   | "fp_temp"   | "max_temp" | "med_pres"
-  | "ambient_h2"  | "fuel_percent" | "mass" | "pressure"
-  | "consumption" | "time_left"
-  | "warning"
+  | "motor_power"
+  | "motor_temp"
+  | "fc_temp"
+  | "coolant_temp" //change here
+  | "tank_temp"
+  | "fp_temp"
+  | "max_temp"
+  | "med_pres"
+  | "ambient_h2"
+  | "fuel_percent"
+  | "mass"
+  | "pressure"
+  | "consumption"
+  | "time_left"
+  | "warning";
 
 export type DecodedItem =
   | { key: Exclude<DashboardKey, "warning">; value: number }
-  | { key: "warning"; value: { name: string; severity: "amber" | "red" } }
+  | { key: "warning"; value: { name: string; severity: "amber" | "red" } };
 
 // Track rising edge per warning signal so log replay doesn't spam duplicates.
-const warningActiveBySignal: Record<string, boolean> = {}
+const warningActiveBySignal: Record<string, boolean> = {};
 
 // Optional: override DBC fault/warning signals to control UI naming + severity.
 // Add entries as you learn which signals you actually care about.
 const WARNING_OVERRIDES: Record<
   string,
   { name: string; severity: "amber" | "red" }
-> = {}
+> = {};
 
 function severityFromSignalName(sigName: string): "amber" | "red" | null {
   // Simple heuristic:
   // - *Warning* => amber
   // - *Error* => red
-  if (sigName.includes("Warning")) return "amber"
-  if (sigName.includes("Error")) return "red"
-  return null
+  if (sigName.includes("Warning")) return "amber";
+  if (sigName.includes("Error")) return "red";
+  return null;
 }
 
-function maybeEmitWarning(sigName: string, rawValue: number): DecodedItem | null {
-  const override = WARNING_OVERRIDES[sigName]
-  const severity = override ? override.severity : severityFromSignalName(sigName)
-  if (!severity) return null
+function maybeEmitWarning(
+  sigName: string,
+  rawValue: number,
+): DecodedItem | null {
+  const override = WARNING_OVERRIDES[sigName];
+  const severity = override
+    ? override.severity
+    : severityFromSignalName(sigName);
+  if (!severity) return null;
 
-  const active = rawValue !== 0
-  const wasActive = warningActiveBySignal[sigName] ?? false
-  warningActiveBySignal[sigName] = active
+  const active = rawValue !== 0;
+  const wasActive = warningActiveBySignal[sigName] ?? false;
+  warningActiveBySignal[sigName] = active;
 
   if (active && !wasActive) {
-    return { key: "warning", value: { name: override?.name ?? sigName, severity } }
+    return {
+      key: "warning",
+      value: { name: override?.name ?? sigName, severity },
+    };
   }
-  return null
+  return null;
 }
 
 // -----------------------------------------------------------------------
@@ -136,60 +153,98 @@ function maybeEmitWarning(sigName: string, rawValue: number): DecodedItem | null
 // -----------------------------------------------------------------------
 
 export function decodeMessage(msg: any): DecodedItem[] {
-  const results: DecodedItem[] = []
+  const results: DecodedItem[] = [];
 
   // ── Shape A: live log replay from server ──────────────────────────────
   // { can_id: "0x702", signals: { SignalName: number, ... } }
-  if (msg && typeof msg.can_id === "string" && typeof msg.signals === "object") {
-    const signals = msg.signals as Record<string, number>
+  if (
+    msg &&
+    typeof msg.can_id === "string" &&
+    typeof msg.signals === "object"
+  ) {
+    const signals = msg.signals as Record<string, number>;
     for (const [sigName, rawValue] of Object.entries(signals)) {
-      const dashKey = SIGNAL_MAP[sigName]
+      const dashKey = SIGNAL_MAP[sigName];
       if (dashKey) {
         results.push({
           key: dashKey as Exclude<DashboardKey, "warning">,
-          value: rawValue as number,
-        })
+          value: Math.round((rawValue as number) * 10) / 10,
+        });
       }
 
-      const warn = maybeEmitWarning(sigName, rawValue as number)
-      if (warn) results.push(warn)
+      const warn = maybeEmitWarning(sigName, rawValue as number);
+      if (warn) results.push(warn);
     }
-    return results
+    return results;
   }
 
-  // ── Shape B: legacy simulator messages ───────────────────────────────
-  // { id: number, value: number | { name, severity } }
-  if (msg && typeof msg.id === "number") {
-    switch (msg.id) {
-      // Gauges
-      case 101: results.push({ key: "motor_power",  value: msg.value }); break
-      case 102: results.push({ key: "motor_temp",   value: msg.value }); break
-      case 103: results.push({ key: "fc_temp",      value: msg.value }); break
-      case 104: results.push({ key: "coolant_temp", value: msg.value }); break //change here 
-      case 105: results.push({ key: "tank_temp",    value: msg.value }); break
-      case 106: results.push({ key: "fp_temp",      value: msg.value }); break
-      case 107: results.push({ key: "max_temp",     value: msg.value }); break
-      case 108: results.push({ key: "med_pres",     value: msg.value }); break
-      // Hydrogen panel
-      case 201: results.push({ key: "ambient_h2",   value: msg.value }); break
-      case 202: results.push({ key: "fuel_percent",  value: msg.value }); break
-      case 203: results.push({ key: "mass",          value: msg.value }); break
-      case 204: results.push({ key: "pressure",      value: msg.value }); break
-      case 205: results.push({ key: "consumption",   value: msg.value }); break
-      case 206: results.push({ key: "time_left",     value: msg.value }); break
-      // Warnings
-      case 300: {
-        const w = msg.value as { name: string; severity: "amber" | "red" }
-        const name = w?.name
-        const severity = w?.severity
-        if (typeof name === "string" && severity && !warningActiveBySignal[name]) {
-          warningActiveBySignal[name] = true
-          results.push({ key: "warning", value: { name, severity } })
-        }
-        break
-      }
-    }
-  }
-
-  return results
+  // If message doesn't match expected format, return empty array
+  return [];
 }
+// // ── Shape B: legacy simulator messages ───────────────────────────────
+// // { id: number, value: number | { name, severity } }
+// if (msg && typeof msg.id === "number") {
+//   switch (msg.id) {
+//     // Gauges
+//     case 101:
+//       results.push({ key: "motor_power", value: msg.value });
+//       break;
+//     case 102:
+//       results.push({ key: "motor_temp", value: msg.value });
+//       break;
+//     case 103:
+//       results.push({ key: "fc_temp", value: msg.value });
+//       break;
+//     case 104:
+//       results.push({ key: "coolant_temp", value: msg.value });
+//       break; //change here
+//     case 105:
+//       results.push({ key: "tank_temp", value: msg.value });
+//       break;
+//     case 106:
+//       results.push({ key: "fp_temp", value: msg.value });
+//       break;
+//     case 107:
+//       results.push({ key: "max_temp", value: msg.value });
+//       break;
+//     case 108:
+//       results.push({ key: "med_pres", value: msg.value });
+//       break;
+//     // Hydrogen panel
+//     case 201:
+//       results.push({ key: "ambient_h2", value: msg.value });
+//       break;
+//     case 202:
+//       results.push({ key: "fuel_percent", value: msg.value });
+//       break;
+//     case 203:
+//       results.push({ key: "mass", value: msg.value });
+//       break;
+//     case 204:
+//       results.push({ key: "pressure", value: msg.value });
+//       break;
+//     case 205:
+//       results.push({ key: "consumption", value: msg.value });
+//       break;
+//     case 206:
+//       results.push({ key: "time_left", value: msg.value });
+//       break;
+//     // Warnings
+//     case 300: {
+//       const w = msg.value as { name: string; severity: "amber" | "red" };
+//       const name = w?.name;
+//       const severity = w?.severity;
+//       if (
+//         typeof name === "string" &&
+//         severity &&
+//         !warningActiveBySignal[name]
+//       ) {
+//         warningActiveBySignal[name] = true;
+//         results.push({ key: "warning", value: { name, severity } });
+//       }
+//       break;
+//     }
+//   }
+// }
+
+// return results;

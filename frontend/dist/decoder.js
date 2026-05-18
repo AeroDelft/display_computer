@@ -90,14 +90,19 @@ function severityFromSignalName(sigName) {
 function maybeEmitWarning(sigName, rawValue) {
     var _a, _b;
     const override = WARNING_OVERRIDES[sigName];
-    const severity = override ? override.severity : severityFromSignalName(sigName);
+    const severity = override
+        ? override.severity
+        : severityFromSignalName(sigName);
     if (!severity)
         return null;
     const active = rawValue !== 0;
     const wasActive = (_a = warningActiveBySignal[sigName]) !== null && _a !== void 0 ? _a : false;
     warningActiveBySignal[sigName] = active;
     if (active && !wasActive) {
-        return { key: "warning", value: { name: (_b = override === null || override === void 0 ? void 0 : override.name) !== null && _b !== void 0 ? _b : sigName, severity } };
+        return {
+            key: "warning",
+            value: { name: (_b = override === null || override === void 0 ? void 0 : override.name) !== null && _b !== void 0 ? _b : sigName, severity },
+        };
     }
     return null;
 }
@@ -111,14 +116,16 @@ export function decodeMessage(msg) {
     const results = [];
     // ── Shape A: live log replay from server ──────────────────────────────
     // { can_id: "0x702", signals: { SignalName: number, ... } }
-    if (msg && typeof msg.can_id === "string" && typeof msg.signals === "object") {
+    if (msg &&
+        typeof msg.can_id === "string" &&
+        typeof msg.signals === "object") {
         const signals = msg.signals;
         for (const [sigName, rawValue] of Object.entries(signals)) {
             const dashKey = SIGNAL_MAP[sigName];
             if (dashKey) {
                 results.push({
                     key: dashKey,
-                    value: rawValue,
+                    value: Math.round(rawValue * 10) / 10,
                 });
             }
             const warn = maybeEmitWarning(sigName, rawValue);
@@ -127,66 +134,72 @@ export function decodeMessage(msg) {
         }
         return results;
     }
-    // ── Shape B: legacy simulator messages ───────────────────────────────
-    // { id: number, value: number | { name, severity } }
-    if (msg && typeof msg.id === "number") {
-        switch (msg.id) {
-            // Gauges
-            case 101:
-                results.push({ key: "motor_power", value: msg.value });
-                break;
-            case 102:
-                results.push({ key: "motor_temp", value: msg.value });
-                break;
-            case 103:
-                results.push({ key: "fc_temp", value: msg.value });
-                break;
-            case 104:
-                results.push({ key: "coolant_temp", value: msg.value });
-                break; //change here 
-            case 105:
-                results.push({ key: "tank_temp", value: msg.value });
-                break;
-            case 106:
-                results.push({ key: "fp_temp", value: msg.value });
-                break;
-            case 107:
-                results.push({ key: "max_temp", value: msg.value });
-                break;
-            case 108:
-                results.push({ key: "med_pres", value: msg.value });
-                break;
-            // Hydrogen panel
-            case 201:
-                results.push({ key: "ambient_h2", value: msg.value });
-                break;
-            case 202:
-                results.push({ key: "fuel_percent", value: msg.value });
-                break;
-            case 203:
-                results.push({ key: "mass", value: msg.value });
-                break;
-            case 204:
-                results.push({ key: "pressure", value: msg.value });
-                break;
-            case 205:
-                results.push({ key: "consumption", value: msg.value });
-                break;
-            case 206:
-                results.push({ key: "time_left", value: msg.value });
-                break;
-            // Warnings
-            case 300: {
-                const w = msg.value;
-                const name = w === null || w === void 0 ? void 0 : w.name;
-                const severity = w === null || w === void 0 ? void 0 : w.severity;
-                if (typeof name === "string" && severity && !warningActiveBySignal[name]) {
-                    warningActiveBySignal[name] = true;
-                    results.push({ key: "warning", value: { name, severity } });
-                }
-                break;
-            }
-        }
-    }
-    return results;
+    // If message doesn't match expected format, return empty array
+    return [];
 }
+// // ── Shape B: legacy simulator messages ───────────────────────────────
+// // { id: number, value: number | { name, severity } }
+// if (msg && typeof msg.id === "number") {
+//   switch (msg.id) {
+//     // Gauges
+//     case 101:
+//       results.push({ key: "motor_power", value: msg.value });
+//       break;
+//     case 102:
+//       results.push({ key: "motor_temp", value: msg.value });
+//       break;
+//     case 103:
+//       results.push({ key: "fc_temp", value: msg.value });
+//       break;
+//     case 104:
+//       results.push({ key: "coolant_temp", value: msg.value });
+//       break; //change here
+//     case 105:
+//       results.push({ key: "tank_temp", value: msg.value });
+//       break;
+//     case 106:
+//       results.push({ key: "fp_temp", value: msg.value });
+//       break;
+//     case 107:
+//       results.push({ key: "max_temp", value: msg.value });
+//       break;
+//     case 108:
+//       results.push({ key: "med_pres", value: msg.value });
+//       break;
+//     // Hydrogen panel
+//     case 201:
+//       results.push({ key: "ambient_h2", value: msg.value });
+//       break;
+//     case 202:
+//       results.push({ key: "fuel_percent", value: msg.value });
+//       break;
+//     case 203:
+//       results.push({ key: "mass", value: msg.value });
+//       break;
+//     case 204:
+//       results.push({ key: "pressure", value: msg.value });
+//       break;
+//     case 205:
+//       results.push({ key: "consumption", value: msg.value });
+//       break;
+//     case 206:
+//       results.push({ key: "time_left", value: msg.value });
+//       break;
+//     // Warnings
+//     case 300: {
+//       const w = msg.value as { name: string; severity: "amber" | "red" };
+//       const name = w?.name;
+//       const severity = w?.severity;
+//       if (
+//         typeof name === "string" &&
+//         severity &&
+//         !warningActiveBySignal[name]
+//       ) {
+//         warningActiveBySignal[name] = true;
+//         results.push({ key: "warning", value: { name, severity } });
+//       }
+//       break;
+//     }
+//   }
+// }
+// return results;

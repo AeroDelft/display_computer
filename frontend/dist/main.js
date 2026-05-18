@@ -62,7 +62,7 @@ const gauges = {
     tank_temp: tankTempGauge,
     fp_temp: fpTempGauge,
     max_temp: maxTempGauge,
-    med_pres: medPresGauge
+    med_pres: medPresGauge,
 };
 // Tracked so we can derive max_temp ourselves when the source is the log replayer
 const temps = {
@@ -77,15 +77,16 @@ const TEMP_KEYS = Object.keys(temps);
 // HELPER – update a single decoded item on the dashboard
 // ─────────────────────────────────────────────────────────────────────────────
 function applyDecoded(key, value) {
+    console.log(value);
     // ── Gauge update ─────────────────────────────────────────────────────
     const gauge = gauges[key];
     if (gauge) {
-        gauge.setOption({ series: [{ data: [{ value }] }] });
+        gauge.setOption({ series: [{ data: [{ value: value }] }] });
     }
     // ── Temperature tracking → derive max_temp ───────────────────────────
     if (TEMP_KEYS.includes(key)) {
         temps[key] = value;
-        const max = Math.max(...TEMP_KEYS.map(k => temps[k]));
+        const max = Math.max(...TEMP_KEYS.map((k) => temps[k]));
         maxTempGauge.setOption({ series: [{ data: [{ value: max }] }] });
     }
     // ── Hydrogen / info panel ────────────────────────────────────────────
@@ -95,8 +96,7 @@ function applyDecoded(key, value) {
                 value.toFixed(2) + "%";
             break;
         case "fuel_percent":
-            document.getElementById("fuel_level").style.height =
-                value + "%";
+            document.getElementById("fuel_level").style.height = value + "%";
             break;
         case "mass":
             document.getElementById("mass_value").innerText =
@@ -111,8 +111,7 @@ function applyDecoded(key, value) {
                 value.toFixed(3) + " kg/s";
             break;
         case "time_left":
-            document.getElementById("time_value").innerText =
-                value + " s";
+            document.getElementById("time_value").innerText = value + " s";
             break;
         case "warning":
             addWarning(value.name, value.severity);
@@ -123,7 +122,6 @@ function applyDecoded(key, value) {
 // RECEIVE TELEMETRY  (log replayer via WebSocket)
 // ─────────────────────────────────────────────────────────────────────────────
 connectWebSocket((msg) => {
-    console.log("WS message:", msg);
     const items = decodeMessage(msg); // always returns an array now
     for (const item of items) {
         applyDecoded(item.key, item.value);

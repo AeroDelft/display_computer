@@ -13,7 +13,7 @@ from starlette.websockets import WebSocketDisconnect
 # Configure logging
 # To enable DEBUG logging, change level to logging.DEBUG
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.ERROR,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
@@ -36,7 +36,7 @@ os.makedirs(ROOT_DIR / "assets", exist_ok=True)
 csv_path = ROOT_DIR / "assets" / f"{timestamp_str}[{filename}].csv"
 
 can_bus = can.interface.Bus(
-    channel="vcan0", interface="socketcan", recv_own_messages=False
+    channel="can0", interface="socketcan", recv_own_messages=False
 )
 logger.info(f"CAN bus initialized on channel vcan0")
 logger.info(f"CSV logging to: {csv_path}")
