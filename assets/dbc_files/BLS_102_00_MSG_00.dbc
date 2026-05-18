@@ -1,0 +1,978 @@
+VERSION "Generated From DCHV GUI 3.2.0"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Brightloop_Can_Loader ECU DCDC
+
+
+BO_ 2147489346 DcdcNode2Setpoints1Value: 6 DCDC
+ SG_ NMultiplexer M : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ VPath4Setpoint m4 : 4|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPath5Setpoint m5 : 4|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPath6Setpoint m6 : 4|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPath4LimitHi m4 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath5LimitHi m5 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath6LimitHi m6 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath4LimitLo m4 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath5LimitLo m5 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath6LimitLo m6 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ NPath4VoltageSideSelected m4 : 40|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath5VoltageSideSelected m5 : 40|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath6VoltageSideSelected m6 : 40|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath4CurrentSideSelected m4 : 42|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath5CurrentSideSelected m5 : 42|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath6CurrentSideSelected m6 : 42|2@1+ (1,0) [0|3] ""  ECU
+
+BO_ 2147489347 DcdcNode3Setpoints1Value: 6 DCDC
+ SG_ NMultiplexer M : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ VPath1Setpoint m1 : 4|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPath2Setpoint m2 : 4|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPath3Setpoint m3 : 4|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPath1LimitHi m1 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath2LimitHi m2 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath3LimitHi m3 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath1LimitLo m1 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath2LimitLo m2 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ IPath3LimitLo m3 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  ECU
+ SG_ NPath1VoltageSideSelected m1 : 40|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath2VoltageSideSelected m2 : 40|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath3VoltageSideSelected m3 : 40|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath1CurrentSideSelected m1 : 42|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath2CurrentSideSelected m2 : 42|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath3CurrentSideSelected m3 : 42|2@1+ (1,0) [0|3] ""  ECU
+
+BO_ 2147489410 DcdcNode2Setpoints2Value: 5 DCDC
+ SG_ NMultiplexer M : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ PPath4LimitHi m4 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath5LimitHi m5 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath6LimitHi m6 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath4LimitLo m4 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath5LimitLo m5 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath6LimitLo m6 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+
+BO_ 2147489411 DcdcNode3Setpoints2Value: 5 DCDC
+ SG_ NMultiplexer M : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ PPath1LimitHi m1 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath2LimitHi m2 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath3LimitHi m3 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath1LimitLo m1 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath2LimitLo m2 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+ SG_ PPath3LimitLo m3 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  ECU
+
+BO_ 2147488834 DcdcNode2PortB2Value: 7 DCDC
+ SG_ VPortB2Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortB2Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortB2Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortB2Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortB2OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147488771 DcdcNode3PortB1Value: 7 DCDC
+ SG_ VPortB1Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortB1Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortB1Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortB1Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortB1OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147488127 DcdcSetpointsRead: 2 ECU
+ SG_ BReadSetpointRequest : 0|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ NPathSelect : 4|4@1+ (1,0) [0|15] ""  DCDC
+ SG_ NCRC : 8|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 2147488063 DcdcAcknowledgeErrors: 3 ECU
+ SG_ BAckErrorsPath1Request : 0|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BAckErrorsPath2Request : 1|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BAckErrorsPath3Request : 2|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BAckErrorsPath4Request : 3|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BAckErrorsPath5Request : 4|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BAckErrorsPath6Request : 5|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BAckErrorsModuleRequest : 8|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ NModuleSelect : 10|6@1+ (1,0) [0|63] ""  DCDC
+ SG_ NCRC : 16|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 2147487999 DcdcSetpoints2Write: 7 ECU
+ SG_ NMultiplexer M : 0|4@1+ (1,0) [0|15] ""  DCDC
+ SG_ PPath1LimitHi m1 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath2LimitHi m2 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath3LimitHi m3 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath4LimitHi m4 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath5LimitHi m5 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath6LimitHi m6 : 8|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath1LimitLo m1 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath2LimitLo m2 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath3LimitLo m3 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath4LimitLo m4 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath5LimitLo m5 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ PPath6LimitLo m6 : 24|16@1+ (100,-3000000) [-3000000|3553500] "W"  DCDC
+ SG_ NModuleSelect : 40|6@1+ (1,0) [0|63] ""  DCDC
+ SG_ NCRC : 48|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 2147488066 DcdcNode2PortA4Value: 7 DCDC
+ SG_ VPortA4Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA4Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA4Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortA4Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortA4OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147488130 DcdcNode2PortA5Value: 7 DCDC
+ SG_ VPortA5Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA5Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA5Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortA5Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortA5OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147488194 DcdcNode2PortA6Value: 7 DCDC
+ SG_ VPortA6Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA6Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA6Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortA6Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortA6OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147487875 DcdcNode3PortA1Value: 7 DCDC
+ SG_ VPortA1Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA1Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA1Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortA1Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortA1OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147487939 DcdcNode3PortA2Value: 7 DCDC
+ SG_ VPortA2Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA2Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA2Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortA2Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortA2OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147488003 DcdcNode3PortA3Value: 7 DCDC
+ SG_ VPortA3Min : 0|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA3Max : 12|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ VPortA3Average : 24|12@1+ (1,0) [0|4095] "V"  ECU
+ SG_ IPortA3Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  ECU
+ SG_ NPortA3OverloadCount : 48|8@1+ (1,0) [0|255] ""  ECU
+
+BO_ 2147489474 DcdcNode2ConfigAndSettingsValue: 4 DCDC
+ SG_ NReadZoneSelect : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NParameterIndex : 4|12@1+ (1,0) [0|4095] ""  ECU
+ SG_ NParameterValue : 16|16@1+ (1,0) [0|65535] ""  ECU
+
+BO_ 2147489475 DcdcNode3ConfigAndSettingsValue: 4 DCDC
+ SG_ NReadZoneSelect : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NParameterIndex : 4|12@1+ (1,0) [0|4095] ""  ECU
+ SG_ NParameterValue : 16|16@1+ (1,0) [0|65535] ""  ECU
+
+BO_ 2147487810 DcdcNode2GlobalValue: 7 DCDC
+ SG_ NMultiplexer M : 0|8@1+ (1,0) [0|255] ""  ECU
+ SG_ VAux1Measured m0 : 8|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAux2Measured m0 : 16|8@1+ (0.02,0) [0|5.1] "V"  ECU
+ SG_ VAux3Measured m0 : 24|8@1+ (0.01,0) [0|2.55] "V"  ECU
+ SG_ NReleaseMode m0 : 32|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NSyncNodeRank m0 : 34|5@1+ (1,0) [0|31] ""  ECU
+ SG_ NSyncNodeCount m0 : 39|5@1+ (1,0) [0|31] ""  ECU
+ SG_ NCellOtpErrorFlags m0 : 48|8@1+ (1,0) [0|255] ""  ECU
+ SG_ TCell1N1 m1 : 8|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell2N1 m1 : 24|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell3N1 m1 : 40|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell4N1 m2 : 8|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell5N1 m2 : 24|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell6N1 m2 : 40|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell7N1 m3 : 8|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell8N1 m3 : 24|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell1N2 m1 : 16|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell2N2 m1 : 32|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell3N2 m1 : 48|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell4N2 m2 : 16|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell5N2 m2 : 32|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell6N2 m2 : 48|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell7N2 m3 : 16|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell8N2 m3 : 32|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TInternal m3 : 40|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ NConfigVersion m4 : 8|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NConfigCrc m4 : 24|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NBootloaderId m4 : 40|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NSettingsVersion m5 : 8|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NSettingsCrc m5 : 24|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NApplicationId m5 : 40|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NChecksum m6 : 8|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NSerial m6 : 24|32@1+ (1,0) [0|4294967295] ""  ECU
+ SG_ NCellSwOcpErrorFlags m7 : 8|8@1+ (1,0) [0|255] ""  ECU
+ SG_ NCellXcpErrorFlags m7 : 16|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NCellVAuxErrorFlags m7 : 32|8@1+ (1,0) [0|255] ""  ECU
+ SG_ VAuxCell1N1 m8 : 8|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell2N1 m8 : 16|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell3N1 m8 : 24|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell4N1 m8 : 32|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell5N1 m8 : 40|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell6N1 m8 : 48|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell7N1 m9 : 8|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell8N1 m9 : 16|8@1+ (0.15,0) [0|38.25] "V"  ECU
+
+BO_ 2147487811 DcdcNode3GlobalValue: 7 DCDC
+ SG_ NMultiplexer M : 0|8@1+ (1,0) [0|255] ""  ECU
+ SG_ VAux1Measured m0 : 8|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAux2Measured m0 : 16|8@1+ (0.02,0) [0|5.1] "V"  ECU
+ SG_ VAux3Measured m0 : 24|8@1+ (0.01,0) [0|2.55] "V"  ECU
+ SG_ NReleaseMode m0 : 32|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NSyncNodeRank m0 : 34|5@1+ (1,0) [0|31] ""  ECU
+ SG_ NSyncNodeCount m0 : 39|5@1+ (1,0) [0|31] ""  ECU
+ SG_ NCellOtpErrorFlags m0 : 48|8@1+ (1,0) [0|255] ""  ECU
+ SG_ TCell1N1 m1 : 8|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell2N1 m1 : 24|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell3N1 m1 : 40|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell4N1 m2 : 8|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell5N1 m2 : 24|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell6N1 m2 : 40|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell7N1 m3 : 8|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell8N1 m3 : 24|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell1N2 m1 : 16|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell2N2 m1 : 32|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell3N2 m1 : 48|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell4N2 m2 : 16|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell5N2 m2 : 32|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell6N2 m2 : 48|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell7N2 m3 : 16|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TCell8N2 m3 : 32|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ TInternal m3 : 40|8@1+ (1,-40) [-40|215] "°C"  ECU
+ SG_ NConfigVersion m4 : 8|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NConfigCrc m4 : 24|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NBootloaderId m4 : 40|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NSettingsVersion m5 : 8|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NSettingsCrc m5 : 24|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NApplicationId m5 : 40|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NChecksum m6 : 8|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NSerial m6 : 24|32@1+ (1,0) [0|4294967295] ""  ECU
+ SG_ NCellSwOcpErrorFlags m7 : 8|8@1+ (1,0) [0|255] ""  ECU
+ SG_ NCellXcpErrorFlags m7 : 16|16@1+ (1,0) [0|65535] ""  ECU
+ SG_ NCellVAuxErrorFlags m7 : 32|8@1+ (1,0) [0|255] ""  ECU
+ SG_ VAuxCell1N1 m8 : 8|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell2N1 m8 : 16|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell3N1 m8 : 24|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell4N1 m8 : 32|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell5N1 m8 : 40|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell6N1 m8 : 48|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell7N1 m9 : 8|8@1+ (0.15,0) [0|38.25] "V"  ECU
+ SG_ VAuxCell8N1 m9 : 16|8@1+ (0.15,0) [0|38.25] "V"  ECU
+
+BO_ 2147487746 DcdcNode2Status: 8 DCDC
+ SG_ NModuleState : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ BSafetyDischargeRequested : 4|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSwResetModuleRequested : 5|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BReadConfigAndSettingsRequested : 6|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSyncStatus : 7|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSafetyDischargeStatus : 8|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BEnableSignal : 9|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BFaultSignal : 10|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSafetyDischargeEnabled : 11|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BAuxIsoEnabled : 12|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BCanTimeoutError : 13|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BAuxSupplyError : 14|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BConfigSettingsError : 15|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BInternalTemperatureError : 16|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSyncRequested : 17|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSyncInputSignal : 18|1@1+ (1,0) [0|1] ""  ECU
+ SG_ NCellHwErrorFlags : 20|8@1+ (1,0) [0|255] ""  ECU
+ SG_ BXcpError : 28|1@1+ (1,0) [0|1] ""  ECU
+ SG_ NMultiplexer M : 29|3@1+ (1,0) [0|7] ""  ECU
+ SG_ NPath4State m3 : 32|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NPath5State m4 : 32|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NPath6State m5 : 32|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NPath4VoltageSideSelected m3 : 36|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath5VoltageSideSelected m4 : 36|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath6VoltageSideSelected m5 : 36|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath4CurrentSideSelected m3 : 38|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath5CurrentSideSelected m4 : 38|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath6CurrentSideSelected m5 : 38|2@1+ (1,0) [0|3] ""  ECU
+ SG_ BPath4Requested m3 : 40|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5Requested m4 : 40|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6Requested m5 : 40|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath4SideAOvpError m3 : 41|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5SideAOvpError m4 : 41|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6SideAOvpError m5 : 41|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath4SideBOvpError m3 : 42|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5SideBOvpError m4 : 42|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6SideBOvpError m5 : 42|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath4SideAUvpError m3 : 43|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5SideAUvpError m4 : 43|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6SideAUvpError m5 : 43|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath4SideBUvpError m3 : 44|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5SideBUvpError m4 : 44|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6SideBUvpError m5 : 44|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath4OtpError m3 : 45|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5OtpError m4 : 45|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6OtpError m5 : 45|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath4OcpError m3 : 46|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5OcpError m4 : 46|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6OcpError m5 : 46|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath4RcpWarning m3 : 47|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5RcpWarning m4 : 47|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6RcpWarning m5 : 47|1@1+ (1,0) [0|1] ""  ECU
+ SG_ IPath4Unbalance m3 : 48|8@1+ (0.25,0) [0|63.75] "A"  ECU
+ SG_ IPath5Unbalance m4 : 48|8@1+ (0.25,0) [0|63.75] "A"  ECU
+ SG_ IPath6Unbalance m5 : 48|8@1+ (0.25,0) [0|63.75] "A"  ECU
+ SG_ BPath4ErrVAuxCell m3 : 56|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath5ErrVAuxCell m4 : 56|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath6ErrVAuxCell m5 : 56|1@1+ (1,0) [0|1] ""  ECU
+
+BO_ 2147487747 DcdcNode3Status: 8 DCDC
+ SG_ NModuleState : 0|4@1+ (1,0) [0|15] ""  ECU
+ SG_ BSafetyDischargeRequested : 4|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSwResetModuleRequested : 5|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BReadConfigAndSettingsRequested : 6|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSyncStatus : 7|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSafetyDischargeStatus : 8|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BEnableSignal : 9|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BFaultSignal : 10|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSafetyDischargeEnabled : 11|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BAuxIsoEnabled : 12|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BCanTimeoutError : 13|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BAuxSupplyError : 14|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BConfigSettingsError : 15|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BInternalTemperatureError : 16|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSyncRequested : 17|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BSyncInputSignal : 18|1@1+ (1,0) [0|1] ""  ECU
+ SG_ NCellHwErrorFlags : 20|8@1+ (1,0) [0|255] ""  ECU
+ SG_ BXcpError : 28|1@1+ (1,0) [0|1] ""  ECU
+ SG_ NMultiplexer M : 29|3@1+ (1,0) [0|7] ""  ECU
+ SG_ NPath1State m0 : 32|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NPath2State m1 : 32|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NPath3State m2 : 32|4@1+ (1,0) [0|15] ""  ECU
+ SG_ NPath1VoltageSideSelected m0 : 36|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath2VoltageSideSelected m1 : 36|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath3VoltageSideSelected m2 : 36|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath1CurrentSideSelected m0 : 38|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath2CurrentSideSelected m1 : 38|2@1+ (1,0) [0|3] ""  ECU
+ SG_ NPath3CurrentSideSelected m2 : 38|2@1+ (1,0) [0|3] ""  ECU
+ SG_ BPath1Requested m0 : 40|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2Requested m1 : 40|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3Requested m2 : 40|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath1SideAOvpError m0 : 41|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2SideAOvpError m1 : 41|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3SideAOvpError m2 : 41|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath1SideBOvpError m0 : 42|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2SideBOvpError m1 : 42|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3SideBOvpError m2 : 42|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath1SideAUvpError m0 : 43|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2SideAUvpError m1 : 43|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3SideAUvpError m2 : 43|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath1SideBUvpError m0 : 44|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2SideBUvpError m1 : 44|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3SideBUvpError m2 : 44|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath1OtpError m0 : 45|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2OtpError m1 : 45|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3OtpError m2 : 45|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath1OcpError m0 : 46|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2OcpError m1 : 46|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3OcpError m2 : 46|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath1RcpWarning m0 : 47|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2RcpWarning m1 : 47|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3RcpWarning m2 : 47|1@1+ (1,0) [0|1] ""  ECU
+ SG_ IPath1Unbalance m0 : 48|8@1+ (0.25,0) [0|63.75] "A"  ECU
+ SG_ IPath2Unbalance m1 : 48|8@1+ (0.25,0) [0|63.75] "A"  ECU
+ SG_ IPath3Unbalance m2 : 48|8@1+ (0.25,0) [0|63.75] "A"  ECU
+ SG_ BPath1ErrVAuxCell m0 : 56|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath2ErrVAuxCell m1 : 56|1@1+ (1,0) [0|1] ""  ECU
+ SG_ BPath3ErrVAuxCell m2 : 56|1@1+ (1,0) [0|1] ""  ECU
+
+BO_ 2147487935 DcdcSetpoints1Write: 8 ECU
+ SG_ NMultiplexer M : 0|4@1+ (1,0) [0|15] ""  DCDC
+ SG_ VPath1Setpoint m1 : 4|12@1+ (1,0) [0|4095] "V"  DCDC
+ SG_ VPath2Setpoint m2 : 4|12@1+ (1,0) [0|4095] "V"  DCDC
+ SG_ VPath3Setpoint m3 : 4|12@1+ (1,0) [0|4095] "V"  DCDC
+ SG_ VPath4Setpoint m4 : 4|12@1+ (1,0) [0|4095] "V"  DCDC
+ SG_ VPath5Setpoint m5 : 4|12@1+ (1,0) [0|4095] "V"  DCDC
+ SG_ VPath6Setpoint m6 : 4|12@1+ (1,0) [0|4095] "V"  DCDC
+ SG_ IPath1LimitHi m1 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath2LimitHi m2 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath3LimitHi m3 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath4LimitHi m4 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath5LimitHi m5 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath6LimitHi m6 : 16|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath1LimitLo m1 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath2LimitLo m2 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath3LimitLo m3 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath4LimitLo m4 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath5LimitLo m5 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ IPath6LimitLo m6 : 28|12@1+ (0.5,-1000) [-1000|1047.5] "A"  DCDC
+ SG_ NPath1VoltageSideSelect m1 : 40|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath2VoltageSideSelect m2 : 40|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath3VoltageSideSelect m3 : 40|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath4VoltageSideSelect m4 : 40|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath5VoltageSideSelect m5 : 40|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath6VoltageSideSelect m6 : 40|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath1CurrentSideSelect m1 : 42|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath2CurrentSideSelect m2 : 42|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath3CurrentSideSelect m3 : 42|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath4CurrentSideSelect m4 : 42|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath5CurrentSideSelect m5 : 42|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NPath6CurrentSideSelect m6 : 42|2@1+ (1,0) [0|3] ""  DCDC
+ SG_ NModuleSelect : 48|6@1+ (1,0) [0|63] ""  DCDC
+ SG_ NCRC : 56|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 2147487807 DcdcControl: 4 ECU
+ SG_ NCounter : 0|4@1+ (1,0) [0|15] ""  DCDC
+ SG_ BPath1Request : 4|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BPath2Request : 5|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BPath3Request : 6|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BPath4Request : 7|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BPath5Request : 8|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BPath6Request : 9|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BSafetyDischargeRequest : 12|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BSwResetModuleRequest : 13|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BReadConfigAndSettingsRequest : 14|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BSyncRequest : 15|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ NModuleSelect : 18|6@1+ (1,0) [0|63] ""  DCDC
+ SG_ NCRC : 24|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 2415915010 DCDC_BootloaderReserved12: 8 Brightloop_Can_Loader
+
+BO_ 2415915266 DCDC_BootloaderReserved14: 8 Brightloop_Can_Loader
+
+BO_ 2415915522 DCDC_BootloaderReserved16: 8 Brightloop_Can_Loader
+
+BO_ 2415915778 DCDC_BootloaderReserved18: 8 Brightloop_Can_Loader
+
+BO_ 2415916034 DCDC_BootloaderReserved20: 8 Brightloop_Can_Loader
+
+BO_ 2415916290 DCDC_BootloaderReserved22: 8 Brightloop_Can_Loader
+
+BO_ 2415915074 DCDC_BootloaderReserved13: 8 Brightloop_Can_Loader
+
+BO_ 2415915330 DCDC_BootloaderReserved15: 8 Brightloop_Can_Loader
+
+BO_ 2415915586 DCDC_BootloaderReserved17: 8 Brightloop_Can_Loader
+
+BO_ 2415915842 DCDC_BootloaderReserved19: 8 Brightloop_Can_Loader
+
+BO_ 2415916098 DCDC_BootloaderReserved21: 8 Brightloop_Can_Loader
+
+BO_ 2415916354 DCDC_BootloaderReserved23: 8 Brightloop_Can_Loader
+
+BO_ 2415915011 DCDC_BootloaderReserved24: 8 Brightloop_Can_Loader
+
+BO_ 2415915267 DCDC_BootloaderReserved26: 8 Brightloop_Can_Loader
+
+BO_ 2415915523 DCDC_BootloaderReserved28: 8 Brightloop_Can_Loader
+
+BO_ 2415915779 DCDC_BootloaderReserved30: 8 Brightloop_Can_Loader
+
+BO_ 2415916035 DCDC_BootloaderReserved32: 8 Brightloop_Can_Loader
+
+BO_ 2415916291 DCDC_BootloaderReserved34: 8 Brightloop_Can_Loader
+
+BO_ 2415915075 DCDC_BootloaderReserved25: 8 Brightloop_Can_Loader
+
+BO_ 2415915331 DCDC_BootloaderReserved27: 8 Brightloop_Can_Loader
+
+BO_ 2415915587 DCDC_BootloaderReserved29: 8 Brightloop_Can_Loader
+
+BO_ 2415915843 DCDC_BootloaderReserved31: 8 Brightloop_Can_Loader
+
+BO_ 2415916099 DCDC_BootloaderReserved33: 8 Brightloop_Can_Loader
+
+BO_ 2415916355 DCDC_BootloaderReserved35: 8 Brightloop_Can_Loader
+
+
+
+CM_ "The CAN baudrate can be set by the user according to the following choices: 125Kbps, 250Kbps, 500Kbps and 1Mbps.
+The default value of the CAN bus speed is 500Kbps.";
+CM_ BU_ Brightloop_Can_Loader "Brightloop Can Loader";
+CM_ BU_ ECU "Client Control Unit";
+CM_ BU_ DCDC "DCDC Unit";
+CM_ BO_ 2147489346 "Response message giving the present values of the setpoints";
+CM_ SG_ 2147489346 NMultiplexer "Multiplexer ID: the power path's number of the setpoints";
+CM_ SG_ 2147489346 VPath4Setpoint "Power path 4 voltage setpoint";
+CM_ SG_ 2147489346 VPath5Setpoint "Power path 5 voltage setpoint";
+CM_ SG_ 2147489346 VPath6Setpoint "Power path 6 voltage setpoint";
+CM_ SG_ 2147489346 IPath4LimitHi "Power path 4 current upper limitation";
+CM_ SG_ 2147489346 IPath5LimitHi "Power path 5 current upper limitation";
+CM_ SG_ 2147489346 IPath6LimitHi "Power path 6 current upper limitation";
+CM_ SG_ 2147489346 IPath4LimitLo "Power path 4 current lower limitation";
+CM_ SG_ 2147489346 IPath5LimitLo "Power path 5 current lower limitation";
+CM_ SG_ 2147489346 IPath6LimitLo "Power path 6 current lower limitation";
+CM_ SG_ 2147489346 NPath4VoltageSideSelected "Point of voltage regulation of Power path 4";
+CM_ SG_ 2147489346 NPath5VoltageSideSelected "Point of voltage regulation of Power path 5";
+CM_ SG_ 2147489346 NPath6VoltageSideSelected "Point of voltage regulation of Power path 6";
+CM_ SG_ 2147489346 NPath4CurrentSideSelected "Point of current limitation of Power path 4";
+CM_ SG_ 2147489346 NPath5CurrentSideSelected "Point of current limitation of Power path 5";
+CM_ SG_ 2147489346 NPath6CurrentSideSelected "Point of current limitation of Power path 6";
+CM_ BO_ 2147489347 "Response message giving the present values of the setpoints";
+CM_ SG_ 2147489347 NMultiplexer "Multiplexer ID: the power path's number of the setpoints";
+CM_ SG_ 2147489347 VPath1Setpoint "Power path 1 voltage setpoint";
+CM_ SG_ 2147489347 VPath2Setpoint "Power path 2 voltage setpoint";
+CM_ SG_ 2147489347 VPath3Setpoint "Power path 3 voltage setpoint";
+CM_ SG_ 2147489347 IPath1LimitHi "Power path 1 current upper limitation";
+CM_ SG_ 2147489347 IPath2LimitHi "Power path 2 current upper limitation";
+CM_ SG_ 2147489347 IPath3LimitHi "Power path 3 current upper limitation";
+CM_ SG_ 2147489347 IPath1LimitLo "Power path 1 current lower limitation";
+CM_ SG_ 2147489347 IPath2LimitLo "Power path 2 current lower limitation";
+CM_ SG_ 2147489347 IPath3LimitLo "Power path 3 current lower limitation";
+CM_ SG_ 2147489347 NPath1VoltageSideSelected "Point of voltage regulation of Power path 1";
+CM_ SG_ 2147489347 NPath2VoltageSideSelected "Point of voltage regulation of Power path 2";
+CM_ SG_ 2147489347 NPath3VoltageSideSelected "Point of voltage regulation of Power path 3";
+CM_ SG_ 2147489347 NPath1CurrentSideSelected "Point of current limitation of Power path 1";
+CM_ SG_ 2147489347 NPath2CurrentSideSelected "Point of current limitation of Power path 2";
+CM_ SG_ 2147489347 NPath3CurrentSideSelected "Point of current limitation of Power path 3";
+CM_ BO_ 2147489410 "Response message giving the present values of the setpoints";
+CM_ SG_ 2147489410 NMultiplexer "Multiplexer ID:  the power path's number of the setpoints";
+CM_ SG_ 2147489410 PPath4LimitHi "Power path 4 power upper limitation";
+CM_ SG_ 2147489410 PPath5LimitHi "Power path 5 power upper limitation";
+CM_ SG_ 2147489410 PPath6LimitHi "Power path 6 power upper limitation";
+CM_ SG_ 2147489410 PPath4LimitLo "Power path 4 power lower limitation";
+CM_ SG_ 2147489410 PPath5LimitLo "Power path 5 power lower limitation";
+CM_ SG_ 2147489410 PPath6LimitLo "Power path 6 power lower limitation";
+CM_ BO_ 2147489411 "Response message giving the present values of the setpoints";
+CM_ SG_ 2147489411 NMultiplexer "Multiplexer ID:  the power path's number of the setpoints";
+CM_ SG_ 2147489411 PPath1LimitHi "Power path 1 power upper limitation";
+CM_ SG_ 2147489411 PPath2LimitHi "Power path 2 power upper limitation";
+CM_ SG_ 2147489411 PPath3LimitHi "Power path 3 power upper limitation";
+CM_ SG_ 2147489411 PPath1LimitLo "Power path 1 power lower limitation";
+CM_ SG_ 2147489411 PPath2LimitLo "Power path 2 power lower limitation";
+CM_ SG_ 2147489411 PPath3LimitLo "Power path 3 power lower limitation";
+CM_ BO_ 2147488834 "Values of port B2";
+CM_ SG_ 2147488834 VPortB2Min "Minimum value of the port B2 voltage seen since the last message sent";
+CM_ SG_ 2147488834 VPortB2Max "Maximum value of the  port B2 voltage seen since the last message sent";
+CM_ SG_ 2147488834 VPortB2Average "Average value of the port B2 voltage";
+CM_ SG_ 2147488834 IPortB2Average "Average value of the port B2 current";
+CM_ SG_ 2147488834 NPortB2OverloadCount "Counter indicating the number of times an overload is detected on port B2";
+CM_ BO_ 2147488771 "Values of port B1";
+CM_ SG_ 2147488771 VPortB1Min "Minimum value of the port B1 voltage seen since the last message sent";
+CM_ SG_ 2147488771 VPortB1Max "Maximum value of the  port B1 voltage seen since the last message sent";
+CM_ SG_ 2147488771 VPortB1Average "Average value of the port B1 voltage";
+CM_ SG_ 2147488771 IPortB1Average "Average value of the port B1 current";
+CM_ SG_ 2147488771 NPortB1OverloadCount "Counter indicating the number of times an overload is detected on port B1";
+CM_ BO_ 2147488127 "Command message to read the setpoints";
+CM_ SG_ 2147488127 BReadSetpointRequest "Setpoint read command";
+CM_ SG_ 2147488127 NPathSelect "The number of the power path to apply the setpoint read command to";
+CM_ SG_ 2147488127 NCRC "CRC of the message. The module accepts this message only when a correct CRC is verified";
+CM_ BO_ 2147488063 "Control of error acknowledgement commands";
+CM_ SG_ 2147488063 BAckErrorsPath1Request "Acknowledgement of errors on power path 1";
+CM_ SG_ 2147488063 BAckErrorsPath2Request "Acknowledgement of errors on power path 2";
+CM_ SG_ 2147488063 BAckErrorsPath3Request "Acknowledgement of errors on power path 3";
+CM_ SG_ 2147488063 BAckErrorsPath4Request "Acknowledgement of errors on power path 4";
+CM_ SG_ 2147488063 BAckErrorsPath5Request "Acknowledgement of errors on power path 5";
+CM_ SG_ 2147488063 BAckErrorsPath6Request "Acknowledgement of errors on power path 6";
+CM_ SG_ 2147488063 BAckErrorsModuleRequest "Acknowledgement of all errors on module";
+CM_ SG_ 2147488063 NModuleSelect "Module ID on which to apply error acknowledge : 1-32 for module 1 to module 32, 63 for all modules";
+CM_ SG_ 2147488063 NCRC "CRC of the message. The module accepts this message only when a correct CRC is verified";
+CM_ BO_ 2147487999 "Control  of Setpoints 2";
+CM_ SG_ 2147487999 NMultiplexer "Multiplexer ID: allows to select the power path to apply the setpoints";
+CM_ SG_ 2147487999 PPath1LimitHi "Power path 1 power upper limitation";
+CM_ SG_ 2147487999 PPath2LimitHi "Power path 2 power upper limitation";
+CM_ SG_ 2147487999 PPath3LimitHi "Power path 3 power upper limitation";
+CM_ SG_ 2147487999 PPath4LimitHi "Power path 4 power upper limitation";
+CM_ SG_ 2147487999 PPath5LimitHi "Power path 5 power upper limitation";
+CM_ SG_ 2147487999 PPath6LimitHi "Power path 6 power upper limitation";
+CM_ SG_ 2147487999 PPath1LimitLo "Power path 1 power lower limitation";
+CM_ SG_ 2147487999 PPath2LimitLo "Power path 2 power lower limitation";
+CM_ SG_ 2147487999 PPath3LimitLo "Power path 3 power lower limitation";
+CM_ SG_ 2147487999 PPath4LimitLo "Power path 4 power lower limitation";
+CM_ SG_ 2147487999 PPath5LimitLo "Power path 5 power lower limitation";
+CM_ SG_ 2147487999 PPath6LimitLo "Power path 6 power lower limitation";
+CM_ SG_ 2147487999 NModuleSelect "Module ID on which to apply the setpoints";
+CM_ SG_ 2147487999 NCRC "CRC of the message. The module accepts this message only when a correct CRC is verified";
+CM_ BO_ 2147488066 "Values of port A4";
+CM_ SG_ 2147488066 VPortA4Min "Minimum value of the port A4 voltage seen since the last message sent";
+CM_ SG_ 2147488066 VPortA4Max "Maximum value of the port A4 voltage seen since the last message sent";
+CM_ SG_ 2147488066 VPortA4Average "Average value of the port A4 voltage";
+CM_ SG_ 2147488066 IPortA4Average "Average value of the port A4 current";
+CM_ SG_ 2147488066 NPortA4OverloadCount "Counter indicating the number of times an overload is detected on port A4";
+CM_ BO_ 2147488130 "Values of port A5";
+CM_ SG_ 2147488130 VPortA5Min "Minimum value of the port A5 voltage seen since the last message sent";
+CM_ SG_ 2147488130 VPortA5Max "Maximum value of the port A5 voltage seen since the last message sent";
+CM_ SG_ 2147488130 VPortA5Average "Average value of the port A5 voltage";
+CM_ SG_ 2147488130 IPortA5Average "Average value of the port A5 current";
+CM_ SG_ 2147488130 NPortA5OverloadCount "Counter indicating the number of times an overload is detected on port A5";
+CM_ BO_ 2147488194 "Values of port A6";
+CM_ SG_ 2147488194 VPortA6Min "Minimum value of the port A6 voltage seen since the last message sent";
+CM_ SG_ 2147488194 VPortA6Max "Maximum value of the port A6 voltage seen since the last message sent";
+CM_ SG_ 2147488194 VPortA6Average "Average value of the port A6 voltage";
+CM_ SG_ 2147488194 IPortA6Average "Average value of the port A6 current";
+CM_ SG_ 2147488194 NPortA6OverloadCount "Counter indicating the number of times an overload is detected on port A6";
+CM_ BO_ 2147487875 "Values of port A1";
+CM_ SG_ 2147487875 VPortA1Min "Minimum value of the port A1 voltage seen since the last message sent";
+CM_ SG_ 2147487875 VPortA1Max "Maximum value of the port A1 voltage seen since the last message sent";
+CM_ SG_ 2147487875 VPortA1Average "Average value of the port A1 voltage";
+CM_ SG_ 2147487875 IPortA1Average "Average value of the port A1 current";
+CM_ SG_ 2147487875 NPortA1OverloadCount "Counter indicating the number of times an overload is detected on port A1";
+CM_ BO_ 2147487939 "Values of port A2";
+CM_ SG_ 2147487939 VPortA2Min "Minimum value of the port A2 voltage seen since the last message sent";
+CM_ SG_ 2147487939 VPortA2Max "Maximum value of the port A2 voltage seen since the last message sent";
+CM_ SG_ 2147487939 VPortA2Average "Average value of the port A2 voltage";
+CM_ SG_ 2147487939 IPortA2Average "Average value of the port A2 current";
+CM_ SG_ 2147487939 NPortA2OverloadCount "Counter indicating the number of times an overload is detected on port A2";
+CM_ BO_ 2147488003 "Values of port A3";
+CM_ SG_ 2147488003 VPortA3Min "Minimum value of the port A3 voltage seen since the last message sent";
+CM_ SG_ 2147488003 VPortA3Max "Maximum value of the port A3 voltage seen since the last message sent";
+CM_ SG_ 2147488003 VPortA3Average "Average value of the port A3 voltage";
+CM_ SG_ 2147488003 IPortA3Average "Average value of the port A3 current";
+CM_ SG_ 2147488003 NPortA3OverloadCount "Counter indicating the number of times an overload is detected on port A3";
+CM_ BO_ 2147489474 "Value of all parameters of the configuration and settings";
+CM_ SG_ 2147489474 NReadZoneSelect "Zone in which to read the parameters";
+CM_ SG_ 2147489474 NParameterIndex "Index at which the word is read in the selected zone";
+CM_ SG_ 2147489474 NParameterValue "Value of the parameter";
+CM_ BO_ 2147489475 "Value of all parameters of the configuration and settings";
+CM_ SG_ 2147489475 NReadZoneSelect "Zone in which to read the parameters";
+CM_ SG_ 2147489475 NParameterIndex "Index at which the word is read in the selected zone";
+CM_ SG_ 2147489475 NParameterValue "Value of the parameter";
+CM_ BO_ 2147487810 "Global values";
+CM_ SG_ 2147487810 NMultiplexer "Multiplexer ID";
+CM_ SG_ 2147487810 VAux1Measured "Auxiliary voltage LV value";
+CM_ SG_ 2147487810 VAux2Measured "Auxiliary voltage 3V3 value";
+CM_ SG_ 2147487810 VAux3Measured "Auxiliary voltage used for offset of current and voltage measurement";
+CM_ SG_ 2147487810 NReleaseMode "Reserved";
+CM_ SG_ 2147487810 NSyncNodeRank "Rank of the node in the array";
+CM_ SG_ 2147487810 NSyncNodeCount "Count of nodes in the array";
+CM_ SG_ 2147487810 NCellOtpErrorFlags "Indicates overtemperature protection of cells";
+CM_ SG_ 2147487810 TCell1N1 "Temperature number 1 of cell 1";
+CM_ SG_ 2147487810 TCell2N1 "Temperature number 1 of cell 2";
+CM_ SG_ 2147487810 TCell3N1 "Temperature number 1 of cell 3";
+CM_ SG_ 2147487810 TCell4N1 "Temperature number 1 of cell 4";
+CM_ SG_ 2147487810 TCell5N1 "Temperature number 1 of cell 5";
+CM_ SG_ 2147487810 TCell6N1 "Temperature number 1 of cell 6";
+CM_ SG_ 2147487810 TCell7N1 "Temperature number 1 of cell 7";
+CM_ SG_ 2147487810 TCell8N1 "Temperature number 1 of cell 8";
+CM_ SG_ 2147487810 TCell1N2 "Temperature number 2 of cell 1";
+CM_ SG_ 2147487810 TCell2N2 "Temperature number 2 of cell 2";
+CM_ SG_ 2147487810 TCell3N2 "Temperature number 2 of cell 3";
+CM_ SG_ 2147487810 TCell4N2 "Temperature number 2 of cell 4";
+CM_ SG_ 2147487810 TCell5N2 "Temperature number 2 of cell 5";
+CM_ SG_ 2147487810 TCell6N2 "Temperature number 2 of cell 6";
+CM_ SG_ 2147487810 TCell7N2 "Temperature number 2 of cell 7";
+CM_ SG_ 2147487810 TCell8N2 "Temperature number 2 of cell 8";
+CM_ SG_ 2147487810 TInternal "Global product temperature";
+CM_ SG_ 2147487810 NConfigVersion "Version number of the CONFIG";
+CM_ SG_ 2147487810 NConfigCrc "CRC of the CONFIG";
+CM_ SG_ 2147487810 NBootloaderId "Version number of the bootloader program";
+CM_ SG_ 2147487810 NSettingsVersion "Version number of the SETTINGS";
+CM_ SG_ 2147487810 NSettingsCrc "CRC of the SETTINGS";
+CM_ SG_ 2147487810 NApplicationId "Version number of the application program";
+CM_ SG_ 2147487810 NChecksum "Checksum of the application program";
+CM_ SG_ 2147487810 NSerial "Product Serial Number";
+CM_ SG_ 2147487810 NCellSwOcpErrorFlags "Indicates Sw overcurrent protection ";
+CM_ SG_ 2147487810 NCellXcpErrorFlags "Indicates Xcp error on cells";
+CM_ SG_ 2147487810 NCellVAuxErrorFlags "Indicates Auxiliary voltage error on cells";
+CM_ SG_ 2147487810 VAuxCell1N1 "Auxiliary voltage number 1 of cell 1";
+CM_ SG_ 2147487810 VAuxCell2N1 "Auxiliary voltage number 2 of cell 1";
+CM_ SG_ 2147487810 VAuxCell3N1 "Auxiliary voltage number 3 of cell 1";
+CM_ SG_ 2147487810 VAuxCell4N1 "Auxiliary voltage number 4 of cell 1";
+CM_ SG_ 2147487810 VAuxCell5N1 "Auxiliary voltage number 5 of cell 1";
+CM_ SG_ 2147487810 VAuxCell6N1 "Auxiliary voltage number 6 of cell 1";
+CM_ SG_ 2147487810 VAuxCell7N1 "Auxiliary voltage number 7 of cell 1";
+CM_ SG_ 2147487810 VAuxCell8N1 "Auxiliary voltage number 8 of cell 1";
+CM_ BO_ 2147487811 "Global values";
+CM_ SG_ 2147487811 NMultiplexer "Multiplexer ID";
+CM_ SG_ 2147487811 VAux1Measured "Auxiliary voltage LV value";
+CM_ SG_ 2147487811 VAux2Measured "Auxiliary voltage 3V3 value";
+CM_ SG_ 2147487811 VAux3Measured "Auxiliary voltage used for offset of current and voltage measurement";
+CM_ SG_ 2147487811 NReleaseMode "Reserved";
+CM_ SG_ 2147487811 NSyncNodeRank "Rank of the node in the array";
+CM_ SG_ 2147487811 NSyncNodeCount "Count of nodes in the array";
+CM_ SG_ 2147487811 NCellOtpErrorFlags "Indicates overtemperature protection of cells";
+CM_ SG_ 2147487811 TCell1N1 "Temperature number 1 of cell 1";
+CM_ SG_ 2147487811 TCell2N1 "Temperature number 1 of cell 2";
+CM_ SG_ 2147487811 TCell3N1 "Temperature number 1 of cell 3";
+CM_ SG_ 2147487811 TCell4N1 "Temperature number 1 of cell 4";
+CM_ SG_ 2147487811 TCell5N1 "Temperature number 1 of cell 5";
+CM_ SG_ 2147487811 TCell6N1 "Temperature number 1 of cell 6";
+CM_ SG_ 2147487811 TCell7N1 "Temperature number 1 of cell 7";
+CM_ SG_ 2147487811 TCell8N1 "Temperature number 1 of cell 8";
+CM_ SG_ 2147487811 TCell1N2 "Temperature number 2 of cell 1";
+CM_ SG_ 2147487811 TCell2N2 "Temperature number 2 of cell 2";
+CM_ SG_ 2147487811 TCell3N2 "Temperature number 2 of cell 3";
+CM_ SG_ 2147487811 TCell4N2 "Temperature number 2 of cell 4";
+CM_ SG_ 2147487811 TCell5N2 "Temperature number 2 of cell 5";
+CM_ SG_ 2147487811 TCell6N2 "Temperature number 2 of cell 6";
+CM_ SG_ 2147487811 TCell7N2 "Temperature number 2 of cell 7";
+CM_ SG_ 2147487811 TCell8N2 "Temperature number 2 of cell 8";
+CM_ SG_ 2147487811 TInternal "Global product temperature";
+CM_ SG_ 2147487811 NConfigVersion "Version number of the CONFIG";
+CM_ SG_ 2147487811 NConfigCrc "CRC of the CONFIG";
+CM_ SG_ 2147487811 NBootloaderId "Version number of the bootloader program";
+CM_ SG_ 2147487811 NSettingsVersion "Version number of the SETTINGS";
+CM_ SG_ 2147487811 NSettingsCrc "CRC of the SETTINGS";
+CM_ SG_ 2147487811 NApplicationId "Version number of the application program";
+CM_ SG_ 2147487811 NChecksum "Checksum of the application program";
+CM_ SG_ 2147487811 NSerial "Product Serial Number";
+CM_ SG_ 2147487811 NCellSwOcpErrorFlags "Indicates Sw overcurrent protection ";
+CM_ SG_ 2147487811 NCellXcpErrorFlags "Indicates Xcp error on cells";
+CM_ SG_ 2147487811 NCellVAuxErrorFlags "Indicates Auxiliary voltage error on cells";
+CM_ SG_ 2147487811 VAuxCell1N1 "Auxiliary voltage number 1 of cell 1";
+CM_ SG_ 2147487811 VAuxCell2N1 "Auxiliary voltage number 2 of cell 1";
+CM_ SG_ 2147487811 VAuxCell3N1 "Auxiliary voltage number 3 of cell 1";
+CM_ SG_ 2147487811 VAuxCell4N1 "Auxiliary voltage number 4 of cell 1";
+CM_ SG_ 2147487811 VAuxCell5N1 "Auxiliary voltage number 5 of cell 1";
+CM_ SG_ 2147487811 VAuxCell6N1 "Auxiliary voltage number 6 of cell 1";
+CM_ SG_ 2147487811 VAuxCell7N1 "Auxiliary voltage number 7 of cell 1";
+CM_ SG_ 2147487811 VAuxCell8N1 "Auxiliary voltage number 8 of cell 1";
+CM_ BO_ 2147487746 "Overal DCDC Status & Diagnostic";
+CM_ SG_ 2147487746 NModuleState "Indicates the overall module status";
+CM_ SG_ 2147487746 BSafetyDischargeRequested "Indicates that the safety discharge command has been received";
+CM_ SG_ 2147487746 BSwResetModuleRequested "Indicates that the Software reset command has been received";
+CM_ SG_ 2147487746 BReadConfigAndSettingsRequested "Indicates that the Read config and settings command has been received";
+CM_ SG_ 2147487746 BSyncStatus "Indicates the synchronization has been done successfully";
+CM_ SG_ 2147487746 BSafetyDischargeStatus "Indicates the safety discharge status";
+CM_ SG_ 2147487746 BEnableSignal "Indicates the external hardware ENABLE status";
+CM_ SG_ 2147487746 BFaultSignal "Indicates the signal Fault status";
+CM_ SG_ 2147487746 BSafetyDischargeEnabled "Indicates the safety discharge is activated";
+CM_ SG_ 2147487746 BAuxIsoEnabled "Indicates that isolated auxiliary supplies are activated";
+CM_ SG_ 2147487746 BCanTimeoutError "Indicates an error on the CAN bus";
+CM_ SG_ 2147487746 BAuxSupplyError "Indicates a fault on one of the auxiliary power supplies";
+CM_ SG_ 2147487746 BConfigSettingsError "Indicates that the Config and/or Settings data is corrupted";
+CM_ SG_ 2147487746 BInternalTemperatureError "Indicates an overtemperature error on the internal temperature";
+CM_ SG_ 2147487746 BSyncRequested "Indicates the synchronization command has been received";
+CM_ SG_ 2147487746 BSyncInputSignal "Indicates if a correct synchronization signal is detected on the input synchronization pin";
+CM_ SG_ 2147487746 NCellHwErrorFlags "Indicates HW errors triggered on CELL";
+CM_ SG_ 2147487746 BXcpError "Indicates a power switches command?s integrity fault";
+CM_ SG_ 2147487746 NMultiplexer "Multiplexer ID";
+CM_ SG_ 2147487746 NPath4State "Indicates the path 4 status";
+CM_ SG_ 2147487746 NPath5State "Indicates the path 5 status";
+CM_ SG_ 2147487746 NPath6State "Indicates the path 6 status";
+CM_ SG_ 2147487746 NPath4VoltageSideSelected "Point of voltage regulation of Power path 4";
+CM_ SG_ 2147487746 NPath5VoltageSideSelected "Point of voltage regulation of Power path 5";
+CM_ SG_ 2147487746 NPath6VoltageSideSelected "Point of voltage regulation of Power path 6";
+CM_ SG_ 2147487746 NPath4CurrentSideSelected "Point of current limitation of Power path 4";
+CM_ SG_ 2147487746 NPath5CurrentSideSelected "Point of current limitation of Power path 5";
+CM_ SG_ 2147487746 NPath6CurrentSideSelected "Point of current limitation of Power path 6";
+CM_ SG_ 2147487746 BPath4Requested "Indicates that the power path 4 start command has been received";
+CM_ SG_ 2147487746 BPath5Requested "Indicates that the power path 5 start command has been received";
+CM_ SG_ 2147487746 BPath6Requested "Indicates that the power path 6 start command has been received";
+CM_ SG_ 2147487746 BPath4SideAOvpError "Power path 4 side A overvoltage fault";
+CM_ SG_ 2147487746 BPath5SideAOvpError "Power path 5 side A overvoltage fault";
+CM_ SG_ 2147487746 BPath6SideAOvpError "Power path 6 side A overvoltage fault";
+CM_ SG_ 2147487746 BPath4SideBOvpError "Power path 4 side B overvoltage fault";
+CM_ SG_ 2147487746 BPath5SideBOvpError "Power path 5 side B overvoltage fault";
+CM_ SG_ 2147487746 BPath6SideBOvpError "Power path 6 side B overvoltage fault";
+CM_ SG_ 2147487746 BPath4SideAUvpError "Power path 4 side A undervoltage fault";
+CM_ SG_ 2147487746 BPath5SideAUvpError "Power path 5 side A undervoltage fault";
+CM_ SG_ 2147487746 BPath6SideAUvpError "Power path 6 side A undervoltage fault";
+CM_ SG_ 2147487746 BPath4SideBUvpError "Power path 4 side B undervoltage fault";
+CM_ SG_ 2147487746 BPath5SideBUvpError "Power path 5 side B undervoltage fault";
+CM_ SG_ 2147487746 BPath6SideBUvpError "Power path 6 side B undervoltage fault";
+CM_ SG_ 2147487746 BPath4OtpError "Power path 4 overtemperature fault";
+CM_ SG_ 2147487746 BPath5OtpError "Power path 5 overtemperature fault";
+CM_ SG_ 2147487746 BPath6OtpError "Power path 6 overtemperature fault";
+CM_ SG_ 2147487746 BPath4OcpError "Power path 4 overcurrent fault";
+CM_ SG_ 2147487746 BPath5OcpError "Power path 5 overcurrent fault";
+CM_ SG_ 2147487746 BPath6OcpError "Power path 6 overcurrent fault";
+CM_ SG_ 2147487746 BPath4RcpWarning "Warns the user of a potential reverse current problem";
+CM_ SG_ 2147487746 BPath5RcpWarning "Warns the user of a potential reverse current problem";
+CM_ SG_ 2147487746 BPath6RcpWarning "Warns the user of a potential reverse current problem";
+CM_ SG_ 2147487746 IPath4Unbalance "Unbalanced current between cells on power path 4";
+CM_ SG_ 2147487746 IPath5Unbalance "Unbalanced current between cells on power path 5";
+CM_ SG_ 2147487746 IPath6Unbalance "Unbalanced current between cells on power path 6";
+CM_ SG_ 2147487746 BPath4ErrVAuxCell "Indicates a driver auxiliary voltage error on power path 4";
+CM_ SG_ 2147487746 BPath5ErrVAuxCell "Indicates a driver auxiliary voltage error on power path 5";
+CM_ SG_ 2147487746 BPath6ErrVAuxCell "Indicates a driver auxiliary voltage error on power path 6";
+CM_ BO_ 2147487747 "Overal DCDC Status & Diagnostic";
+CM_ SG_ 2147487747 NModuleState "Indicates the overall module status";
+CM_ SG_ 2147487747 BSafetyDischargeRequested "Indicates that the safety discharge command has been received";
+CM_ SG_ 2147487747 BSwResetModuleRequested "Indicates that the Software reset command has been received";
+CM_ SG_ 2147487747 BReadConfigAndSettingsRequested "Indicates that the Read config and settings command has been received";
+CM_ SG_ 2147487747 BSyncStatus "Indicates the synchronization has been done successfully";
+CM_ SG_ 2147487747 BSafetyDischargeStatus "Indicates the safety discharge status";
+CM_ SG_ 2147487747 BEnableSignal "Indicates the external hardware ENABLE status";
+CM_ SG_ 2147487747 BFaultSignal "Indicates the signal Fault status";
+CM_ SG_ 2147487747 BSafetyDischargeEnabled "Indicates the safety discharge is activated";
+CM_ SG_ 2147487747 BAuxIsoEnabled "Indicates that isolated auxiliary supplies are activated";
+CM_ SG_ 2147487747 BCanTimeoutError "Indicates an error on the CAN bus";
+CM_ SG_ 2147487747 BAuxSupplyError "Indicates a fault on one of the auxiliary power supplies";
+CM_ SG_ 2147487747 BConfigSettingsError "Indicates that the Config and/or Settings data is corrupted";
+CM_ SG_ 2147487747 BInternalTemperatureError "Indicates an overtemperature error on the internal temperature";
+CM_ SG_ 2147487747 BSyncRequested "Indicates the synchronization command has been received";
+CM_ SG_ 2147487747 BSyncInputSignal "Indicates if a correct synchronization signal is detected on the input synchronization pin";
+CM_ SG_ 2147487747 NCellHwErrorFlags "Indicates HW errors triggered on CELL";
+CM_ SG_ 2147487747 BXcpError "Indicates a power switches command?s integrity fault";
+CM_ SG_ 2147487747 NMultiplexer "Multiplexer ID";
+CM_ SG_ 2147487747 NPath1State "Indicates the path 1 status";
+CM_ SG_ 2147487747 NPath2State "Indicates the path 2 status";
+CM_ SG_ 2147487747 NPath3State "Indicates the path 3 status";
+CM_ SG_ 2147487747 NPath1VoltageSideSelected "Point of voltage regulation of Power path 1";
+CM_ SG_ 2147487747 NPath2VoltageSideSelected "Point of voltage regulation of Power path 2";
+CM_ SG_ 2147487747 NPath3VoltageSideSelected "Point of voltage regulation of Power path 3";
+CM_ SG_ 2147487747 NPath1CurrentSideSelected "Point of current limitation of Power path 1";
+CM_ SG_ 2147487747 NPath2CurrentSideSelected "Point of current limitation of Power path 2";
+CM_ SG_ 2147487747 NPath3CurrentSideSelected "Point of current limitation of Power path 3";
+CM_ SG_ 2147487747 BPath1Requested "Indicates that the power path 1 start command has been received";
+CM_ SG_ 2147487747 BPath2Requested "Indicates that the power path 2 start command has been received";
+CM_ SG_ 2147487747 BPath3Requested "Indicates that the power path 3 start command has been received";
+CM_ SG_ 2147487747 BPath1SideAOvpError "Power path 1 side A overvoltage fault";
+CM_ SG_ 2147487747 BPath2SideAOvpError "Power path 2 side A overvoltage fault";
+CM_ SG_ 2147487747 BPath3SideAOvpError "Power path 3 side A overvoltage fault";
+CM_ SG_ 2147487747 BPath1SideBOvpError "Power path 1 side B overvoltage fault";
+CM_ SG_ 2147487747 BPath2SideBOvpError "Power path 2 side B overvoltage fault";
+CM_ SG_ 2147487747 BPath3SideBOvpError "Power path 3 side B overvoltage fault";
+CM_ SG_ 2147487747 BPath1SideAUvpError "Power path 1 side A undervoltage fault";
+CM_ SG_ 2147487747 BPath2SideAUvpError "Power path 2 side A undervoltage fault";
+CM_ SG_ 2147487747 BPath3SideAUvpError "Power path 3 side A undervoltage fault";
+CM_ SG_ 2147487747 BPath1SideBUvpError "Power path 1 side B undervoltage fault";
+CM_ SG_ 2147487747 BPath2SideBUvpError "Power path 2 side B undervoltage fault";
+CM_ SG_ 2147487747 BPath3SideBUvpError "Power path 3 side B undervoltage fault";
+CM_ SG_ 2147487747 BPath1OtpError "Power path 1 overtemperature fault";
+CM_ SG_ 2147487747 BPath2OtpError "Power path 2 overtemperature fault";
+CM_ SG_ 2147487747 BPath3OtpError "Power path 3 overtemperature fault";
+CM_ SG_ 2147487747 BPath1OcpError "Power path 1 overcurrent fault";
+CM_ SG_ 2147487747 BPath2OcpError "Power path 2 overcurrent fault";
+CM_ SG_ 2147487747 BPath3OcpError "Power path 3 overcurrent fault";
+CM_ SG_ 2147487747 BPath1RcpWarning "Warns the user of a potential reverse current problem";
+CM_ SG_ 2147487747 BPath2RcpWarning "Warns the user of a potential reverse current problem";
+CM_ SG_ 2147487747 BPath3RcpWarning "Warns the user of a potential reverse current problem";
+CM_ SG_ 2147487747 IPath1Unbalance "Unbalanced current between cells on power path 1";
+CM_ SG_ 2147487747 IPath2Unbalance "Unbalanced current between cells on power path 2";
+CM_ SG_ 2147487747 IPath3Unbalance "Unbalanced current between cells on power path 3";
+CM_ SG_ 2147487747 BPath1ErrVAuxCell "Indicates a driver auxiliary voltage error on power path 1";
+CM_ SG_ 2147487747 BPath2ErrVAuxCell "Indicates a driver auxiliary voltage error on power path 2";
+CM_ SG_ 2147487747 BPath3ErrVAuxCell "Indicates a driver auxiliary voltage error on power path 3";
+CM_ BO_ 2147487935 "Control  of Setpoints 1";
+CM_ SG_ 2147487935 NMultiplexer "Multiplexer ID: allows to select the power path to apply the setpoints";
+CM_ SG_ 2147487935 VPath1Setpoint "Power path 1 voltage setpoint";
+CM_ SG_ 2147487935 VPath2Setpoint "Power path 2 voltage setpoint";
+CM_ SG_ 2147487935 VPath3Setpoint "Power path 3 voltage setpoint";
+CM_ SG_ 2147487935 VPath4Setpoint "Power path 4 voltage setpoint";
+CM_ SG_ 2147487935 VPath5Setpoint "Power path 5 voltage setpoint";
+CM_ SG_ 2147487935 VPath6Setpoint "Power path 6 voltage setpoint";
+CM_ SG_ 2147487935 IPath1LimitHi "Power path 1 current upper limitation";
+CM_ SG_ 2147487935 IPath2LimitHi "Power path 2 current upper limitation";
+CM_ SG_ 2147487935 IPath3LimitHi "Power path 3 current upper limitation";
+CM_ SG_ 2147487935 IPath4LimitHi "Power path 4 current upper limitation";
+CM_ SG_ 2147487935 IPath5LimitHi "Power path 5 current upper limitation";
+CM_ SG_ 2147487935 IPath6LimitHi "Power path 6 current upper limitation";
+CM_ SG_ 2147487935 IPath1LimitLo "Power path 1 current lower limitation";
+CM_ SG_ 2147487935 IPath2LimitLo "Power path 2 current lower limitation";
+CM_ SG_ 2147487935 IPath3LimitLo "Power path 3 current lower limitation";
+CM_ SG_ 2147487935 IPath4LimitLo "Power path 4 current lower limitation";
+CM_ SG_ 2147487935 IPath5LimitLo "Power path 5 current lower limitation";
+CM_ SG_ 2147487935 IPath6LimitLo "Power path 6 current lower limitation";
+CM_ SG_ 2147487935 NPath1VoltageSideSelect "Point of voltage regulation of Power path 1";
+CM_ SG_ 2147487935 NPath2VoltageSideSelect "Point of voltage regulation of Power path 2";
+CM_ SG_ 2147487935 NPath3VoltageSideSelect "Point of voltage regulation of Power path 3";
+CM_ SG_ 2147487935 NPath4VoltageSideSelect "Point of voltage regulation of Power path 4";
+CM_ SG_ 2147487935 NPath5VoltageSideSelect "Point of voltage regulation of Power path 5";
+CM_ SG_ 2147487935 NPath6VoltageSideSelect "Point of voltage regulation of Power path 6";
+CM_ SG_ 2147487935 NPath1CurrentSideSelect "Point of current limitation of Power path 1";
+CM_ SG_ 2147487935 NPath2CurrentSideSelect "Point of current limitation of Power path 2";
+CM_ SG_ 2147487935 NPath3CurrentSideSelect "Point of current limitation of Power path 3";
+CM_ SG_ 2147487935 NPath4CurrentSideSelect "Point of current limitation of Power path 4";
+CM_ SG_ 2147487935 NPath5CurrentSideSelect "Point of current limitation of Power path 5";
+CM_ SG_ 2147487935 NPath6CurrentSideSelect "Point of current limitation of Power path 6";
+CM_ SG_ 2147487935 NModuleSelect "Module ID on which to apply the setpoints";
+CM_ SG_ 2147487935 NCRC "CRC of the message. The module accepts this message only when a correct CRC is verified";
+CM_ BO_ 2147487807 "Control message from the ECU";
+CM_ SG_ 2147487807 NCounter "Counter for reception of CAN messages. If it does not change for more than CanTimeOut parameter then an error is detected (CAN error)";
+CM_ SG_ 2147487807 BPath1Request "Start/Stop power path 1 command";
+CM_ SG_ 2147487807 BPath2Request "Start/Stop power path 2 command";
+CM_ SG_ 2147487807 BPath3Request "Start/Stop power path 3 command";
+CM_ SG_ 2147487807 BPath4Request "Start/Stop power path 4 command";
+CM_ SG_ 2147487807 BPath5Request "Start/Stop power path 5 command";
+CM_ SG_ 2147487807 BPath6Request "Start/Stop power path 6 command";
+CM_ SG_ 2147487807 BSafetyDischargeRequest "Module safety discharge command";
+CM_ SG_ 2147487807 BSwResetModuleRequest "Software reset module command";
+CM_ SG_ 2147487807 BReadConfigAndSettingsRequest "Read config and settings of module command";
+CM_ SG_ 2147487807 BSyncRequest "Activate synchronization command";
+CM_ SG_ 2147487807 NModuleSelect "Module ID on which to apply software reset command and/or read config and settings command and/or discharge active command : 1-32 for module 1 to module 32, 63 for all modules";
+CM_ SG_ 2147487807 NCRC "CRC of the message. The module accepts this message only when a correct CRC is verified";
+CM_ BO_ 2415915010 "";
+CM_ BO_ 2415915266 "";
+CM_ BO_ 2415915522 "";
+CM_ BO_ 2415915778 "";
+CM_ BO_ 2415916034 "";
+CM_ BO_ 2415916290 "";
+CM_ BO_ 2415915074 "";
+CM_ BO_ 2415915330 "";
+CM_ BO_ 2415915586 "";
+CM_ BO_ 2415915842 "";
+CM_ BO_ 2415916098 "";
+CM_ BO_ 2415916354 "";
+CM_ BO_ 2415915011 "";
+CM_ BO_ 2415915267 "";
+CM_ BO_ 2415915523 "";
+CM_ BO_ 2415915779 "";
+CM_ BO_ 2415916035 "";
+CM_ BO_ 2415916291 "";
+CM_ BO_ 2415915075 "";
+CM_ BO_ 2415915331 "";
+CM_ BO_ 2415915587 "";
+CM_ BO_ 2415915843 "";
+CM_ BO_ 2415916099 "";
+CM_ BO_ 2415916355 "";
+BA_DEF_  "Baudrate" INT 0 1000000;
+BA_DEF_  "Bootloader Range Address" STRING ;
+BA_DEF_  "Application Range Address" STRING ;
+BA_DEF_DEF_  "Baudrate" 500000;
+BA_DEF_DEF_  "Bootloader Range Address" "0x0FFFF000";
+BA_DEF_DEF_  "Application Range Address" "0x00001000";
+BA_  "Baudrate" 500000;
+BA_  "Bootloader Range Address" "0xffff000";
+BA_  "Application Range Address" "0x1000";
+VAL_ 2147489346 NPath4VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489346 NPath5VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489346 NPath6VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489346 NPath4CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489346 NPath5CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489346 NPath6CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489347 NPath1VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489347 NPath2VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489347 NPath3VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489347 NPath1CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489347 NPath2CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147489347 NPath3CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487746 NModuleState 1 "Sleep" 2 "Disabled" 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487746 NPath4State 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487746 NPath5State 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487746 NPath6State 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487746 NPath4VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487746 NPath5VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487746 NPath6VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487746 NPath4CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487746 NPath5CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487746 NPath6CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487747 NModuleState 1 "Sleep" 2 "Disabled" 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487747 NPath1State 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487747 NPath2State 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487747 NPath3State 4 "Power Off" 8 "Power On" 15 "Fault" ;
+VAL_ 2147487747 NPath1VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487747 NPath2VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487747 NPath3VoltageSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487747 NPath1CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487747 NPath2CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487747 NPath3CurrentSideSelected 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath1VoltageSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath2VoltageSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath3VoltageSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath4VoltageSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath5VoltageSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath6VoltageSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath1CurrentSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath2CurrentSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath3CurrentSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath4CurrentSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath5CurrentSideSelect 1 "Side A" 2 "Side B" ;
+VAL_ 2147487935 NPath6CurrentSideSelect 1 "Side A" 2 "Side B" ;
+

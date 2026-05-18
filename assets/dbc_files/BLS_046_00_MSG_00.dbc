@@ -1,0 +1,351 @@
+VERSION "ae3c"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Brightloop_Can_Loader SECU DCDC
+
+
+BO_ 1796 NDCDCValueAux: 7 DCDC
+ SG_ NDCDCReserved : 40|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ VDCDCAux5Measured : 32|8@1+ (0.01289377,0) [0|3.28791135] "V"  SECU
+ SG_ VDCDCAux4Measured : 24|8@1+ (0.0386813,0) [0|9.8637315] "V"  SECU
+ SG_ VDCDCAux3Measured : 16|8@1+ (0.015472526,0) [0|3.94549413] "V"  SECU
+ SG_ VDCDCAux2Measured : 8|8@1+ (0.0386813,0) [0|9.8637315] "V"  SECU
+ SG_ VDCDCAux1Measured : 0|8@1+ (0.07723368,0) [0|19.6945884] "V"  SECU
+
+BO_ 1798 NDCDCValueLV2: 8 DCDC
+ SG_ NDCDCLV2OverloadCount : 56|8@1+ (1,0) [0|255] ""  SECU
+ SG_ IDCDCLV2UnBalance : 48|8@1+ (0.25,0) [0|63.75] "A"  SECU
+ SG_ IDCDCLV2Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  SECU
+ SG_ VDCDCLV2Average : 24|12@1+ (0.015294215,0) [0|62.629810425] "V"  SECU
+ SG_ VDCDCLV2Max : 12|12@1+ (0.015294215,0) [0|62.629810425] "V"  SECU
+ SG_ VDCDCLV2Min : 0|12@1+ (0.015294215,0) [0|62.629810425] "V"  SECU
+
+BO_ 1797 NDCDCValueLV1: 8 DCDC
+ SG_ IDCDCLV1UnBalance : 48|8@1+ (0.25,0) [0|63.75] "A"  SECU
+ SG_ NDCDCLV1OverloadCount : 56|8@1+ (1,0) [0|255] ""  SECU
+ SG_ IDCDCLV1Average : 36|12@1+ (0.25,-500) [-500|523.75] "A"  SECU
+ SG_ VDCDCLV1Average : 24|12@1+ (0.015294215,0) [0|62.629810425] "V"  SECU
+ SG_ VDCDCLV1Max : 12|12@1+ (0.015294215,0) [0|62.629810425] "V"  SECU
+ SG_ VDCDCLV1Min : 0|12@1+ (0.015294215,0) [0|62.629810425] "V"  SECU
+
+BO_ 1795 NDCDCValue: 8 DCDC
+ SG_ NDCDCSettingsVersion m7 : 32|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCSettingsCrc m7 : 48|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCConfigVersion m6 : 32|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCConfigCrc m6 : 48|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCHVOverloadCount m2 : 56|8@1+ (1,0) [0|255] ""  SECU
+ SG_ IDCDCHVAverage m2 : 44|12@1+ (0.0125,-25) [-25|26.1875] "A"  SECU
+ SG_ NDCDCSerial m5 : 32|32@1+ (1,0) [0|4294967295] ""  SECU
+ SG_ NDCDCBootloaderId m4 : 48|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCApplicationId m4 : 32|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCXcpFaultsFlag m3 : 32|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ NDCDCChecksum m3 : 48|16@1+ (1,0) [0|65535] ""  SECU
+ SG_ TDCDCBB4Measured m1 : 40|8@1+ (1,-40) [-40|215] "°C"  SECU
+ SG_ TDCDCBB3Measured m1 : 32|8@1+ (1,-40) [-40|215] "°C"  SECU
+ SG_ TDCDCBB2Measured m0 : 56|8@1+ (1,-40) [-40|215] "°C"  SECU
+ SG_ TDCDCBB1Measured m0 : 48|8@1+ (1,-40) [-40|215] "°C"  SECU
+ SG_ TDCDCSR2Measured m0 : 40|8@1+ (1,-40) [-40|215] "°C"  SECU
+ SG_ TDCDCSR1Measured m0 : 32|8@1+ (1,-40) [-40|215] "°C"  SECU
+ SG_ VDCDCHVAverage m2 : 32|12@1+ (0.33333,-1) [-1|1363.98635] "V"  SECU
+ SG_ Multiplexer M : 27|5@1+ (1,0) [0|31] ""  SECU
+ SG_ VDCDCSRMin : 0|9@1+ (0.1223537,0) [0|62.5227407] "V"  SECU
+ SG_ VDCDCSRMax : 9|9@1+ (0.1223537,0) [0|62.5227407] "V"  SECU
+ SG_ VDCDCSRAverage : 18|9@1+ (0.1223537,0) [0|62.5227407] "V"  SECU
+
+BO_ 1794 NDCDCStatus: 8 DCDC
+ SG_ NDCDCReleaseMode : 60|2@1+ (1,0) [0|3] ""  SECU
+ SG_ BDCDCDischargeDemanded : 59|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCRegenerationDemanded : 58|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCUmbilicalDemanded : 57|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCPowerDemanded : 56|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCRcpWarning : 54|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCBB4OtpError : 53|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCBB3OtpError : 52|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCBB2OtpError : 51|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCBB1OtpError : 50|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCSR2OtpError : 49|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCSR1OtpError : 48|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV2Warning : 23|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV2UvpError : 22|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV2OvpError : 21|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV2Demanded : 20|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV1Warning : 19|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV1UvpError : 18|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV1OvpError : 17|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLV1Demanded : 16|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCLVAlimAuxError : 15|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCSRUvpError : 14|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCSROvpError : 13|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCHVUvpError : 12|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCHVOvpError : 11|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCHVOcpError : 10|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCHVError : 9|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCXcpError : 8|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCConfigSettingsError : 7|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCCANError : 6|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCAuxIsoEnabled : 5|1@1+ (1,0) [0|1] ""  SECU
+ SG_ BDCDCWakeUp : 4|1@1+ (1,0) [0|1] ""  SECU
+ SG_ NDCDCState : 0|4@1+ (1,0) [0|15] ""  SECU
+
+BO_ 1793 NDCDCSetpoints: 4 SECU
+ SG_ VDCDCHVSetpoint m9 : 8|12@1+ (0.25,0) [0|1023.75] "V"  DCDC
+ SG_ IDCDCHVLimit m9 : 20|12@1+ (0.05,-100) [-100|104.75] "A"  DCDC
+ SG_ VDCDCLV2Setpoint m2 : 8|12@1+ (0.0152942148,0) [0|62.629809606] "V"  DCDC
+ SG_ VDCDCLV1Setpoint m1 : 8|12@1+ (0.0152942148,0) [0|62.629809606] "V"  DCDC
+ SG_ IDCDCLV2Limit m2 : 20|12@1+ (1,-2000) [-2000|2095] "A"  DCDC
+ SG_ IDCDCLV1Limit m1 : 20|12@1+ (1,-2000) [-2000|2095] "A"  DCDC
+ SG_ NDCDCMultiplexer M : 0|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 1792 NDCDCControl: 3 SECU
+ SG_ BDCDCPowerOn : 16|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCDischargeOn : 19|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCRegenerationOn : 18|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCUmbilicalOn : 17|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCLV2Requested : 9|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ BDCDCLV1Requested : 8|1@1+ (1,0) [0|1] ""  DCDC
+ SG_ NDCDCCounter : 0|8@1+ (1,0) [0|255] ""  DCDC
+
+BO_ 1925 DCDC_BootloaderReserved06: 8 Brightloop_Can_Loader
+
+BO_ 1924 DCDC_BootloaderReserved05: 8 Brightloop_Can_Loader
+
+BO_ 1923 DCDC_BootloaderReserved04: 8 Brightloop_Can_Loader
+
+BO_ 1930 DCDC_BootloaderReserved11: 8 Brightloop_Can_Loader
+
+BO_ 1929 DCDC_BootloaderReserved10: 8 Brightloop_Can_Loader
+
+BO_ 1928 DCDC_BootloaderReserved09: 8 Brightloop_Can_Loader
+
+BO_ 1927 DCDC_BootloaderReserved08: 8 Brightloop_Can_Loader
+
+BO_ 1926 DCDC_BootloaderReserved07: 8 Brightloop_Can_Loader
+
+BO_ 1922 DCDC_BootloaderReserved03: 8 Brightloop_Can_Loader
+
+BO_ 1921 DCDC_BootloaderReserved02: 8 Brightloop_Can_Loader
+
+BO_ 1920 DCDC_BootloaderReserved01: 8 Brightloop_Can_Loader
+
+
+
+CM_ "The CAN baudrate can be set by the user according to the following choices: 125Kbps, 250Kbps, 500Kbps and 1Mbps.
+The default value of the CAN bus speed is 1Mbps.";
+CM_ BU_ Brightloop_Can_Loader "Brightloop Can Loader";
+CM_ BU_ SECU "Client Control Unit";
+CM_ BU_ DCDC "DCDC Unit";
+CM_ BO_ 1796 "Aux Values";
+CM_ SG_ 1796 VDCDCAux5Measured "BuckBoost current measurement reference voltage value
+";
+CM_ SG_ 1796 VDCDCAux4Measured "Auxiliary voltage value of each buck-boost channel
+";
+CM_ SG_ 1796 VDCDCAux3Measured "Auxiliary voltage 3V3 value: microcontroller
+";
+CM_ SG_ 1796 VDCDCAux2Measured "Auxiliary voltage 5V value: CAN driver, GaN driver
+
+";
+CM_ SG_ 1796 VDCDCAux1Measured "Auxiliary voltage LV value
+";
+CM_ BO_ 1798 "LV2 Values";
+CM_ SG_ 1798 NDCDCLV2OverloadCount "Counter indicating the number of times an overload is detected on LV2
+";
+CM_ SG_ 1798 IDCDCLV2UnBalance "Detection of a current unbalance on LV2
+";
+CM_ SG_ 1798 IDCDCLV2Average "Average value of the LV2 current
+";
+CM_ SG_ 1798 VDCDCLV2Average "Average value of the LV2 voltage
+";
+CM_ SG_ 1798 VDCDCLV2Max "Maximum value of the LV2 voltage seen since the last message sent
+";
+CM_ SG_ 1798 VDCDCLV2Min "Minimum value of the LV2 voltage seen since the last message sent
+";
+CM_ BO_ 1797 "LV1 Values
+
+
+
+
+
+";
+CM_ SG_ 1797 IDCDCLV1UnBalance "Detection of a current unbalance
+";
+CM_ SG_ 1797 NDCDCLV1OverloadCount "Counter indicating the number of times an overload is detected on LV1
+";
+CM_ SG_ 1797 IDCDCLV1Average "Average value of the LV1 current
+";
+CM_ SG_ 1797 VDCDCLV1Average "Average value of the LV1 voltage
+";
+CM_ SG_ 1797 VDCDCLV1Max "Maximum value of the LV1 voltage seen since the last message sent
+";
+CM_ SG_ 1797 VDCDCLV1Min "Minimum value of the LV1 voltage seen since the last message sent";
+CM_ BO_ 1795 "Global values";
+CM_ SG_ 1795 NDCDCSettingsVersion "Version number of the SETTINGS
+";
+CM_ SG_ 1795 NDCDCSettingsCrc "CRC of the SETTINGS
+";
+CM_ SG_ 1795 NDCDCConfigVersion "Version number of the CONFIG
+";
+CM_ SG_ 1795 NDCDCConfigCrc "CRC of the CONFIG
+";
+CM_ SG_ 1795 NDCDCHVOverloadCount "Counter indicating the number of times an overload is detected on HV";
+CM_ SG_ 1795 IDCDCHVAverage "Average value of the HV current
+";
+CM_ SG_ 1795 NDCDCSerial "Product Serial Number
+";
+CM_ SG_ 1795 NDCDCBootloaderId "Version number of the bootloader program
+";
+CM_ SG_ 1795 NDCDCApplicationId "Version number of the application program
+";
+CM_ SG_ 1795 NDCDCXcpFaultsFlag "Indicates the details of an internal fault";
+CM_ SG_ 1795 NDCDCChecksum "Checksum of the application program
+";
+CM_ SG_ 1795 TDCDCBB4Measured "BB4 temperature
+";
+CM_ SG_ 1795 TDCDCBB3Measured "BB3 temperature
+";
+CM_ SG_ 1795 TDCDCBB2Measured "BB2 temperature
+";
+CM_ SG_ 1795 TDCDCBB1Measured "BB1 temperature
+";
+CM_ SG_ 1795 TDCDCSR2Measured "SR2 temperature
+";
+CM_ SG_ 1795 TDCDCSR1Measured "SR1 temperature
+";
+CM_ SG_ 1795 VDCDCHVAverage "Average value of the HV voltage. When the HV voltage value is unavailable, this parameter takes the value -1V
+
+";
+CM_ SG_ 1795 Multiplexer "Multiplexer ID
+";
+CM_ SG_ 1795 VDCDCSRMin "Minimum value of the SR voltage seen since the last sent message
+";
+CM_ SG_ 1795 VDCDCSRMax "Maximum value of the SR voltage seen since the last sent message
+";
+CM_ SG_ 1795 VDCDCSRAverage "Average value of the SR voltage
+";
+CM_ BO_ 1794 "Overal DCDC Status & Diagnostic";
+CM_ SG_ 1794 BDCDCDischargeDemanded "Indicates that the discharge start command has been received";
+CM_ SG_ 1794 BDCDCRegenerationDemanded "Indicates that the regeneration start command has been received";
+CM_ SG_ 1794 BDCDCUmbilicalDemanded "Indicates that the umbilical start command has been received";
+CM_ SG_ 1794 BDCDCPowerDemanded "Indicates that the power start command has been received";
+CM_ SG_ 1794 BDCDCRcpWarning "Warns the user of a potential problem on reverse current";
+CM_ SG_ 1794 BDCDCBB4OtpError "Overtemperature fault on BB4";
+CM_ SG_ 1794 BDCDCBB3OtpError "Overtemperature fault on BB3";
+CM_ SG_ 1794 BDCDCBB2OtpError "Overtemperature fault on BB2";
+CM_ SG_ 1794 BDCDCBB1OtpError "Overtemperature fault on BB1";
+CM_ SG_ 1794 BDCDCSR2OtpError "Overtemperature fault SR2";
+CM_ SG_ 1794 BDCDCSR1OtpError "Overtemperature fault SR1";
+CM_ SG_ 1794 BDCDCLV2Warning "Warns the user of a potential problem on LV2, see MUT doc (user manuel) for further explanation.
+";
+CM_ SG_ 1794 BDCDCLV2UvpError "Indicates an undervoltage fault on the LV2
+";
+CM_ SG_ 1794 BDCDCLV2OvpError "Indicates an overvoltage fault on the LV2";
+CM_ SG_ 1794 BDCDCLV2Demanded "Indicates that the LV2 start command has been received.
+";
+CM_ SG_ 1794 BDCDCLV1Warning "Warns the user of a potential problem on LV1, see MUT doc (user manuel) for further explanation.
+";
+CM_ SG_ 1794 BDCDCLV1UvpError "Indicates an undervoltage fault on the LV1
+";
+CM_ SG_ 1794 BDCDCLV1OvpError "Indicates an overvoltage fault on the LV1
+";
+CM_ SG_ 1794 BDCDCLV1Demanded "Indicates that the LV1 start command has been received.
+";
+CM_ SG_ 1794 BDCDCLVAlimAuxError "Indicates a fault on one of the auxiliary power supplies of the LV stage";
+CM_ SG_ 1794 BDCDCSRUvpError "Indicates an undervoltage fault on the SR stage.
+";
+CM_ SG_ 1794 BDCDCSROvpError "Indicates an overvoltage fault on the SR stage.
+";
+CM_ SG_ 1794 BDCDCHVUvpError "Indicates an undervoltage fault on the HV
+";
+CM_ SG_ 1794 BDCDCHVOvpError "Indicates an overvoltage fault on the HV
+";
+CM_ SG_ 1794 BDCDCHVOcpError "Indicates HV overcurrent detection
+";
+CM_ SG_ 1794 BDCDCHVError "Indicates an overtemperature fault on the HV stage
+";
+CM_ SG_ 1794 BDCDCXcpError "Indicates an internal fault";
+CM_ SG_ 1794 BDCDCConfigSettingsError "Indicates that the Config and/or Settings data is corrupted";
+CM_ SG_ 1794 BDCDCCANError "Indicates an error on the CAN bus
+";
+CM_ SG_ 1794 BDCDCAuxIsoEnabled "Indicates that isolated auxiliary supplies are activated
+";
+CM_ SG_ 1794 BDCDCWakeUp "Indicates the external signal WakeUp status
+";
+CM_ SG_ 1794 NDCDCState "Indicates the overall product status
+";
+CM_ BO_ 1793 "Control of Setpoints";
+CM_ SG_ 1793 VDCDCHVSetpoint "HV voltage's setpoint
+";
+CM_ SG_ 1793 IDCDCHVLimit "HV current's limitation
+";
+CM_ SG_ 1793 VDCDCLV2Setpoint "LV2 voltage's setpoint
+";
+CM_ SG_ 1793 VDCDCLV1Setpoint "LV1 voltage's setpoint
+";
+CM_ SG_ 1793 IDCDCLV2Limit "LV2 current's limitation
+";
+CM_ SG_ 1793 IDCDCLV1Limit "LV1 current's limitation
+";
+CM_ SG_ 1793 NDCDCMultiplexer "Multiplexer ID: allows to select where to apply the setpoints
+";
+CM_ BO_ 1792 "Control message from the ECU
+
+
+
+
+
+
+
+";
+CM_ SG_ 1792 BDCDCPowerOn " Start/Stop power function command
+";
+CM_ SG_ 1792 BDCDCDischargeOn " Start/Stop discharge function command
+";
+CM_ SG_ 1792 BDCDCRegenerationOn " Start/Stop regeneration function command
+";
+CM_ SG_ 1792 BDCDCUmbilicalOn " Start/Stop umbilical function command
+";
+CM_ SG_ 1792 BDCDCLV2Requested " Start/Stop LV2 command
+";
+CM_ SG_ 1792 BDCDCLV1Requested " Start/Stop LV1 command
+";
+CM_ SG_ 1792 NDCDCCounter "Counter for reception of CAN messages. If it does not change for more than the parameter CanTimeOut then an error is detected (CAN error)
+";
+BA_DEF_  "Baudrate" INT 0 1000000;
+BA_DEF_  "Bootloader Range Address" STRING ;
+BA_DEF_  "Application Range Address" STRING ;
+BA_DEF_DEF_  "Baudrate" 1000000;
+BA_DEF_DEF_  "Bootloader Range Address" "";
+BA_DEF_DEF_  "Application Range Address" "";
+BA_ "Bootloader Range Address" "0x780";
+BA_ "Application Range Address" "0x700";
