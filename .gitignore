@@ -1,9 +1,12 @@
 /backend/.venv
 /backend/__pycache__
 /.runtime
-/assets
+*.csv
+test_log
+logs
 /backend/.venv
 /backend/__pycache__
 /backend/db_test.py
 /backend/test_websocket_client.py
 /backend/test.py
+/frontend/dist

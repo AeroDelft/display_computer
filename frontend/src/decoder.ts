@@ -58,11 +58,20 @@ const SIGNAL_MAP: Record<string, string> = {
   TDCDCBB3Measured: "fp_temp",
 
   // 0x703 (NDCDCValue) – voltages
-  VDCDCSRAverage: "motor_power",
   VDCDCHVAverage: "pressure",
 
   //external
   sensor_PT6100: "med_pres",
+
+  // VCU motor_2 – torque (Nm) and RPM; power is derived in main.ts
+  torque: "motor_torque",
+  rpm: "motor_rpm",
+
+  // VCU Ambiant_temperature – max is derived in main.ts → max_temp gauge
+  TT_9000: "amb_temp_0",
+  TT_9001: "amb_temp_1",
+  TT_9002: "amb_temp_2",
+  TT_9003: "amb_temp_3",
 
   // 0x1002 / 0x1003 (DcdcNode GlobalValue) – cell temperatures
   TInternal: "fc_temp",
@@ -72,7 +81,6 @@ const SIGNAL_MAP: Record<string, string> = {
   TCell4N1: "fp_temp",
 
   // 0x1042 / 0x1043 (DcdcNode GlobalValue) – aux voltages
-  VAux1Measured: "motor_power",
 
   // 0x701 (NDCDCSetpoints)
   VDCDCHVSetpoint: "pressure",
@@ -84,6 +92,12 @@ const SIGNAL_MAP: Record<string, string> = {
 
 export type DashboardKey =
   | "motor_power"
+  | "motor_torque"
+  | "motor_rpm"
+  | "amb_temp_0"
+  | "amb_temp_1"
+  | "amb_temp_2"
+  | "amb_temp_3"
   | "motor_temp"
   | "fc_temp"
   | "coolant_temp" //change here

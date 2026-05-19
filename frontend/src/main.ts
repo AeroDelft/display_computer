@@ -9,6 +9,7 @@ import { decodeMessage } from "./decoder.js";
 // GAUGES
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Motor power gauge – unit is kW, derived from torque × ω
 const motorPowerGauge = createGauge("motor_power", 0, 100, [
   [0.16666667, "#ffffff"],
   [0.3, "#ffb300"],
@@ -46,17 +47,18 @@ const fpTempGauge = createGauge("fp_temp", 0, 100, [
   [0.75, "#ffb300"],
   [1, "#ff0000"],
 ]);
-const maxTempGauge = createGauge("max_temp", -5, 250, [
-  [0.4313, "#ffffff"],
-  [0.588, "#ffb300"],
-  [0.784, "#ff0000"],
+const maxTempGauge = createGauge("max_temp", -10, 250, [
+  [0.4, "#ffffff"],
+  [0.6, "#ffb300"],
+  [0.8, "#ff0000"],
 ]);
 const medPresGauge = createGauge("med_pres", 0, 20, [
   [0.4, "#ffffff"],
   [0.6, "#a0db7e"],
   [0.8, "#ffb300"],
-  [0.1, "#ff0000"],
+  [1.0, "#ff0000"],
 ]);
+
 
 // Lookup table: dashboard key → gauge instance
 const gauges = {
@@ -70,15 +72,21 @@ const gauges = {
   med_pres: medPresGauge,
 };
 
-// Tracked so we can derive max_temp ourselves when the source is the log replayer
-const temps = {
-  motor_temp: 0,
-  fc_temp: 0,
-  coolant_temp: 0,
-  tank_temp: 0,
-  fp_temp: 0,
+// Tracked to derive motor_power = torque × (rpm × 2π/60) / 1000  [kW]
+const motorComponents = {
+  motor_torque: 0, // Nm
+  motor_rpm: 0,   // RPM
 };
-const TEMP_KEYS = Object.keys(temps) as (keyof typeof temps)[];
+const MOTOR_KEYS = Object.keys(motorComponents) as (keyof typeof motorComponents)[];
+
+// Tracked to derive max_temp = max of the 4 VCU ambient temperature sensors
+const ambTemps = {
+  amb_temp_0: 0,
+  amb_temp_1: 0,
+  amb_temp_2: 0,
+  amb_temp_3: 0,
+};
+const AMB_TEMP_KEYS = Object.keys(ambTemps) as (keyof typeof ambTemps)[];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HELPER – update a single decoded item on the dashboard
@@ -86,16 +94,24 @@ const TEMP_KEYS = Object.keys(temps) as (keyof typeof temps)[];
 
 function applyDecoded(key: string, value: any) {
   console.log(value);
-  // ── Gauge update ─────────────────────────────────────────────────────
+  // ── Motor power derivation (torque × ω) ───────────────────────────────────────────────
+  if ((MOTOR_KEYS as string[]).includes(key)) {
+    motorComponents[key as keyof typeof motorComponents] = value as number;
+    const omega = motorComponents.motor_rpm * (2 * Math.PI / 60); // rad/s
+    const powerKW = (motorComponents.motor_torque * omega) / 1000;
+    motorPowerGauge.setOption({ series: [{ data: [{ value: Math.round(powerKW * 10) / 10 }] }] });
+  }
+
+  // ── Gauge update ─────────────────────────────────────────────────────────────────────
   const gauge = gauges[key as keyof typeof gauges];
   if (gauge) {
     gauge.setOption({ series: [{ data: [{ value: value }] }] });
   }
 
-  // ── Temperature tracking → derive max_temp ───────────────────────────
-  if ((TEMP_KEYS as string[]).includes(key)) {
-    temps[key as keyof typeof temps] = value as number;
-    const max = Math.max(...TEMP_KEYS.map((k) => temps[k]));
+  // ── Ambient temperature tracking → derive max_temp ───────────────────
+  if ((AMB_TEMP_KEYS as string[]).includes(key)) {
+    ambTemps[key as keyof typeof ambTemps] = value as number;
+    const max = Math.max(...AMB_TEMP_KEYS.map((k) => ambTemps[k]));
     maxTempGauge.setOption({ series: [{ data: [{ value: max }] }] });
   }
 
