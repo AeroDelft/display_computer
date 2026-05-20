@@ -7,6 +7,9 @@ BACKEND_DIR="${REPO_DIR}/backend"
 FRONTEND_DIR="${REPO_DIR}/frontend"
 RUNTIME_DIR="${REPO_DIR}/.runtime"
 
+sudo ip link set can0 down
+sleep 2
+
 sudo ip link set can0 up type can bitrate 500000
 sudo ip link set can1 up type can bitrate 500000
 
@@ -18,6 +21,9 @@ echo "DISPLAY=${DISPLAY:-<unset>} XDG_SESSION_TYPE=${XDG_SESSION_TYPE:-<unset>}"
 # If these are already running (e.g. after manual restart), stop old instances.
 pkill -f "uvicorn server_logger:app --host 127.0.0.1 --port 8000" || true
 pkill -f "python3 -m http.server 8080 --directory ${FRONTEND_DIR}" || true
+
+gnome-terminal -- bash -c "cd '${FRONTEND_DIR}' && npm run build" 
+# cd "${BACKEND_DIR}"
 
 # Start backend API/WebSocket server.
 gnome-terminal -- bash -c "cd '${BACKEND_DIR}' && .venv/bin/python3 -u -m uvicorn server_logger:app --host 127.0.0.1 --port 8000" 
@@ -69,6 +75,7 @@ launch_browser_once() {
   fi
 }
 
-sleep 5
+#sleep 5
+firefox --new-window "${URL}" 
 # Launch once only. If user closes browser, keep it closed.
-launch_browser_once
+#launch_browser_once
