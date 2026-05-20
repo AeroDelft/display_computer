@@ -51,11 +51,11 @@
 
 const SIGNAL_MAP: Record<string, string> = {
   // 0x703 (NDCDCValue) – temperatures °C
-  TDCDCSR1Measured: "motor_temp",
-  TDCDCSR2Measured: "fc_temp",
-  TDCDCBB1Measured: "coolant_temp",
-  TDCDCBB2Measured: "tank_temp",
-  TDCDCBB3Measured: "fp_temp",
+  temp_motor: "motor_temp",
+  sensor_TT6820: "fc_temp",
+  TDCDCBB1Measured: "coolant_temp", //TT6701
+  TT_OTV: "tank_temp",
+  TDCDCBB3Measured: "fp_temp", //IDK
 
   // 0x703 (NDCDCValue) – voltages
   VDCDCHVAverage: "pressure",
@@ -74,18 +74,14 @@ const SIGNAL_MAP: Record<string, string> = {
   TT_9003: "amb_temp_3",
 
   // 0x1002 / 0x1003 (DcdcNode GlobalValue) – cell temperatures
-  TInternal: "fc_temp",
-  TCell1N1: "motor_temp",
-  TCell2N1: "coolant_temp",
-  TCell3N1: "tank_temp",
-  TCell4N1: "fp_temp",
+
 
   // 0x1042 / 0x1043 (DcdcNode GlobalValue) – aux voltages
 
   // 0x701 (NDCDCSetpoints)
   VDCDCHVSetpoint: "pressure",
   IDCDCLV1Average: "consumption",
-  VDCDCLV1Average: "fuel_percent",
+  VDCDCLV1Average: "fuel_percent", 
 };
 
 // Types
