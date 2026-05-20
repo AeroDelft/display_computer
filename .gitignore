@@ -10,3 +10,4 @@ logs
 /backend/test_websocket_client.py
 /backend/test.py
 /frontend/dist
+/assets/dbc_files/External_Coms.dbc

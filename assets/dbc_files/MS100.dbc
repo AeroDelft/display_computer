@@ -40,6 +40,8 @@ BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
  SG_ fcm_LOAD_CONTROL : 0|16@1+ (0.01,0) [0|655.35] "A" Vector__XXX
 
 BO_ 2625635472 user_SensorInfo4: 8 BoR
+ SG_ sensor_TT6701 : 16|8@1+ (1,-40) [-40|215] "degC"  External
+ SG_ sensor_PT6701 : 24|8@1+ (0.01,0) [0|2.55] "barg"  External
  SG_ sensor_PT6100 : 8|8@1+ (0.1,0) [0|25.5] "barg"  External
 
 BO_ 2625650320 user_ALSH_B04: 8 BoR
@@ -84,6 +86,8 @@ BO_ 2625636752 user_SystemInfo2: 8 BoR
  SG_ info_SystemRuntime : 0|32@1+ (0.1,0) [0|429496729.5] "h"  External
 
 BO_ 2625636496 user_SystemInfo1: 8 BoR
+ SG_ info_PurgeOnDemand_Ok : 9|1@1+ (1,0) [0|1] ""  External
+ SG_ info_PurgeOnDemand : 8|1@1+ (1,0) [0|1] ""  External
  SG_ info_SystemTargetOk : 0|1@1+ (1,0) [0|1] "" Vector__XXX
  SG_ info_BOP_24V_Power : 48|16@1+ (0.01,0) [0|655.35] "kW"  External
  SG_ info_BOP_HV_Power : 32|16@1+ (0.01,0) [0|655.35] "kW"  External
@@ -130,6 +134,7 @@ BO_ 2491416720 Load_Info: 8 BoR
  SG_ load_ActualCurrent : 0|16@1+ (0.01,0) [0|655.35] "A"  External
 
 BO_ 2483028112 FCM_Control: 8 External
+ SG_ fcm_PurgeOnDemandReq : 7|1@1+ (1,0) [0|1] ""  BoR
  SG_ fcm_ErrorState : 32|8@1+ (1,0) [0|255] ""  BoR
  SG_ fcm_ManualDryout : 6|1@1+ (1,0) [0|1] ""  BoR
  SG_ actuator_Pump6812 : 8|8@1+ (1,0) [0|255] "%"  BoR
@@ -323,6 +328,7 @@ BA_ "GenSigStartValue" SG_ 2625637008 time_RTC_Day 0;
 BA_ "GenSigStartValue" SG_ 2625634448 sensor_PT6500 100;
 BA_ "GenSigStartValue" SG_ 2625634448 sensor_PS6103 100;
 BA_ "GenSigStartValue" SG_ 2625634448 sensor_PT6114 100;
+BA_ "GenSigTimeoutTime" SG_ 2483028112 fcm_PurgeOnDemandReq 500;
 BA_ "GenSigTimeoutTime" SG_ 2483028112 fcm_ManualDryout 500;
 BA_ "GenSigTimeoutTime" SG_ 2483028112 fcm_OnRequest 500;
 
