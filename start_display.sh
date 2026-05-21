@@ -75,8 +75,8 @@ launch_browser_once() {
   fi
 }
 
-sleep 5
+sleep 2
 #firefox --new-window "${URL}" 
 # Launch once only. If user closes browser, keep it closed.
 #launch_browser_once
-firefox  --private-window --new-window "${URL}"
+firefox  --private-window --full=screen --new-window "${URL}"

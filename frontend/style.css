@@ -86,11 +86,11 @@ body {
 }
 
 .ambient-value {
-    font-size: clamp(18px, 3.4dvh, 28px);
+    font-size: clamp(22px, 3.4dvh, 28px);
     color: white;
 }
 
-.fuel-section {
+/* .fuel-section {
     display: flex;
     gap: clamp(14px, 3.2vw, 25px);
     margin-top: clamp(8px, 2.2dvh, 10px);
@@ -118,7 +118,7 @@ body {
     gap: clamp(6px, 1.3dvh, 8px);
     color: #ccc;
     font-size: clamp(12px, 2.4dvh, 15px);
-}
+} */
 
 /* ── BOTTOM AREA: hydrogen (left) + warnings (right) ── */
 .bottom-area {
