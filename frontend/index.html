@@ -1,103 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-<head>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-</head>
+    <body>
+        <div class="dashboard">
+            <!-- TOP: GAUGES (3 x 3 grid area) -->
+            <div class="top-area">
+                <div class="gauges">
+                    <div class="gauge-container">
+                        <div class="gauge" id="motor_power"></div>
+                        <div class="gauge-label">Motor Power (kW)</div>
+                    </div>
 
-<body>
+                    <div class="gauge-container">
+                        <div class="gauge" id="motor_temp"></div>
+                        <div class="gauge-label">Motor Temp</div>
+                    </div>
 
-  <div class="dashboard">
+                    <div class="gauge-container">
+                        <div class="gauge" id="fc_temp"></div>
+                        <div class="gauge-label">FC Temp</div>
+                    </div>
 
-    <!-- TOP: GAUGES (3 x 3 grid area) -->
-    <div class="top-area">
-      <div class="gauges">
+                    <div class="gauge-container">
+                        <div class="gauge" id="coolant_temp"></div>
+                        <div class="gauge-label">Coolant Temp</div>
+                    </div>
 
-        <div class="gauge-container">
-          <div class="gauge" id="motor_power"></div>
-          <div class="gauge-label">M Power</div>
+                    <div class="gauge-container">
+                        <div class="gauge" id="tank_temp"></div>
+                        <div class="gauge-label">Tank Temp</div>
+                    </div>
+
+                    <div class="gauge-container">
+                        <div class="gauge" id="fp_temp"></div>
+                        <div class="gauge-label">FP Temp</div>
+                    </div>
+
+                    <div class="gauge-container">
+                        <div class="gauge" id="max_temp"></div>
+                        <div class="gauge-label">Amb Max Temp</div>
+                    </div>
+
+                    <div class="gauge-container">
+                        <div class="gauge" id="med_pres"></div>
+                        <div class="gauge-label">Input Pressure</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM: HYDROGEN (left) + WARNINGS (right) -->
+            <div class="bottom-area">
+                <!-- HYDROGEN INFO -->
+                <div class="hydrogen-panel">
+                    <div class="ambient-h2">
+                        Ambient Air H2
+                        <div class="ambient-value" id="ambient_value">0%</div>
+                    </div>
+                </div>
+
+                <!-- WARNINGS -->
+                <div class="warnings-panel">
+                    <div class="warnings-title">Warnings / Errors</div>
+                    <div id="warnings_list"></div>
+                </div>
+            </div>
         </div>
-
-        <div class="gauge-container">
-          <div class="gauge" id="motor_temp"></div>
-          <div class="gauge-label">M Temp</div>
-        </div>
-
-        <div class="gauge-container">
-          <div class="gauge" id="fc_temp"></div>
-          <div class="gauge-label">FC Temp</div>
-        </div>
-
-        <div class="gauge-container">
-          <div class="gauge" id="coolant_temp"></div>
-          <div class="gauge-label">Cool Temp</div>
-        </div>
-
-        <div class="gauge-container">
-          <div class="gauge" id="tank_temp"></div>
-          <div class="gauge-label">Tank Temp</div>
-        </div>
-
-        <div class="gauge-container">
-          <div class="gauge" id="fp_temp"></div>
-          <div class="gauge-label">FP Temp</div>
-        </div>
-
-        <div class="gauge-container">
-          <div class="gauge" id="max_temp"></div>
-          <div class="gauge-label">Max Temp</div>
-        </div>
-
-        <div class="gauge-container">
-          <div class="gauge" id="placeholder"></div>
-          <div class="gauge-label">Plchol</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- BOTTOM: HYDROGEN (left) + WARNINGS (right) -->
-    <div class="bottom-area">
-
-      <!-- HYDROGEN INFO -->
-      <div class="hydrogen-panel">
-
-        <div class="ambient-h2">
-          Ambient Air H₂
-          <div class="ambient-value" id="ambient_value">0%</div>
-        </div>
-
-        <div class="fuel-section">
-
-          <div class="fuel-bar">
-            <div class="fuel-level" id="fuel_level"></div>
-          </div>
-
-          <div class="fuel-info">
-            <div>Mass: <span id="mass_value">5.0 kg</span></div>
-            <div>Pressure: <span id="pressure_value">350 bar</span></div>
-            <div>Consumption: <span id="consumption_value">0.02 kg/s</span></div>
-            <div>Time Left: <span id="time_value">240 s</span></div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- WARNINGS -->
-      <div class="warnings-panel">
-        <div class="warnings-title">Warnings / Errors</div>
-        <div id="warnings_list"></div>
-      </div>
-
-    </div>
-
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-  <script type="module" src="./dist/main.js"></script>
-</body>
-
+        <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+        <script type="module" src="./dist/main.js?v=3"></script>
+    </body>
 </html>
-
